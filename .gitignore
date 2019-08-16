@@ -1,10 +1,1 @@
-﻿################################################################################
-# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
-################################################################################
-
-/web/.vs/web/config/applicationhost.config
-/web/.vs/web/v16/Server/sqlite3/storage.ide-wal
-/web/.vs/web/v16/Server/sqlite3/storage.ide-shm
-/web/.vs/web/v16/Server/sqlite3/storage.ide
-/web/.vs/web/v16/Server/sqlite3/db.lock
-/web/.vs/web/v16/.suo
+﻿
