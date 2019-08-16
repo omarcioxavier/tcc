@@ -164,6 +164,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Endereco\cidade.cs" />
+    <Compile Include="Models\Endereco\endereco.cs" />
+    <Compile Include="Models\Endereco\estado.cs" />
+    <Compile Include="Models\Estabelecimento\estabelecimento.cs" />
+    <Compile Include="Models\Estabelecimento\estabelecimentoEndereco.cs" />
+    <Compile Include="Models\Log\log.cs" />
+    <Compile Include="Models\Usuario\usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -219,7 +226,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Models\Categoria\" />
+    <Folder Include="Models\Cliente\" />
+    <Folder Include="Models\Produto\" />
     <Folder Include="Repository\" />
     <Folder Include="Services\" />
   </ItemGroup>
