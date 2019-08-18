@@ -164,10 +164,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Categoria\categoria.cs" />
+    <Compile Include="Models\Cliente\clienteCategoria.cs" />
+    <Compile Include="Models\Cliente\cliente.cs" />
+    <Compile Include="Models\Cliente\clienteEndereco.cs" />
+    <Compile Include="Models\Cliente\clienteVenda.cs" />
+    <Compile Include="Models\Estabelecimento\estabelecimentoProduto.cs" />
+    <Compile Include="Models\Produto\produto.cs" />
+    <Compile Include="Models\Produto\produtoVenda.cs" />
     <Compile Include="Models\Endereco\cidade.cs" />
     <Compile Include="Models\Endereco\endereco.cs" />
     <Compile Include="Models\Endereco\estado.cs" />
+    <Compile Include="Models\Utils\Enums\enumModulos.cs" />
     <Compile Include="Models\Estabelecimento\estabelecimento.cs" />
+    <Compile Include="Models\Estabelecimento\estabelecimentoCategoria.cs" />
     <Compile Include="Models\Estabelecimento\estabelecimentoEndereco.cs" />
     <Compile Include="Models\Log\log.cs" />
     <Compile Include="Models\Usuario\usuario.cs" />
@@ -226,9 +236,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Categoria\" />
-    <Folder Include="Models\Cliente\" />
-    <Folder Include="Models\Produto\" />
+    <Folder Include="Models\Venda\" />
     <Folder Include="Repository\" />
     <Folder Include="Services\" />
   </ItemGroup>

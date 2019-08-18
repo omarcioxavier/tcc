@@ -14,6 +14,6 @@ namespace web.Models.Log
 
         public DateTime dataHora { get; set; }
 
-        public int usuarioID { get; set; }
+        public int moduloID { get; set; }
     }
 }
