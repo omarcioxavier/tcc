@@ -13,6 +13,7 @@ namespace web.Models.Endereco
 
         public int estadoID { get; set; }
 
+        [ForeignKey("estadoID")]
         public virtual estado estado { get; set; }
     }
 }

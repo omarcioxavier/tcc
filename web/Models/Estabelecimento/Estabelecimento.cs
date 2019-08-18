@@ -14,5 +14,7 @@ namespace web.Models.Estabelecimento
         public string cnpj { get; set; }
 
         public string inscricaoEstadual { get; set; }
+
+        public bool ativo { get; set; }
     }
 }

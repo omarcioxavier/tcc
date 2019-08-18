@@ -13,10 +13,18 @@ namespace web.Models.Endereco
 
         public string numero { get; set; }
 
+        public string complemento { get; set; }
+
         public string bairro { get; set; }
 
         public string cep { get; set; }
 
         public int cidadeID { get; set; }
+        
+        public int estadoID { get; set; }
+
+        public virtual cidade cidade { get; set; }
+        
+        public virtual estado estado { get; set; }
     }
 }
