@@ -15,5 +15,7 @@ namespace web.Models.Endereco
         public string uf { get; set; }
 
         public virtual IEnumerable<cidade> cidades { get; set; }
+
+        public virtual IEnumerable<endereco> enderecos { get; set; }
     }
 }

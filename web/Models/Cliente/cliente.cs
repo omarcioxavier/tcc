@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using web.Models.Pedido;
 
 namespace web.Models.Cliente
 {
@@ -14,8 +15,15 @@ namespace web.Models.Cliente
 
         public string email { get; set; }
 
+        public string numeroCelular { get; set; }
+
         public bool ativo { get; set; }
 
-        public virtual IEnumerable<clienteVenda> clientesVendas { get; set; }
+        public int cllienteCategoriaID { get; set; }
+
+        [ForeignKey("cllienteCategoriaID")]
+        public virtual clienteCategoria clienteCategoria{ get; set; }
+
+        public virtual IEnumerable<pedido> pedidos{ get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace web.Models.Endereco
@@ -15,5 +16,7 @@ namespace web.Models.Endereco
 
         [ForeignKey("estadoID")]
         public virtual estado estado { get; set; }
+
+        public virtual IEnumerable<endereco> enderecos { get; set; }
     }
 }

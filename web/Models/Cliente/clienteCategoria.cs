@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using web.Models.Categoria;
 
 namespace web.Models.Cliente
 {
@@ -10,14 +10,8 @@ namespace web.Models.Cliente
         [Key]
         public int categoriaClienteID { get; set; }
 
-        public int clienteID { get; set; }
+        public string descricao { get; set; }
 
-        public int categoriaID { get; set; }
-
-        [ForeignKey("clienteID")]
-        public virtual cliente cliente { get; set; }
-
-        [ForeignKey("categoriaID")]
-        public virtual categoria categoria { get; set; }
+        public virtual IEnumerable<cliente> clientes { get; set; }
     }
 }
