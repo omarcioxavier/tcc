@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using web.Models.Categoria;
 
 namespace web.Models.Estabelecimento
 {
@@ -10,12 +10,8 @@ namespace web.Models.Estabelecimento
         [Key]
         public int estabelecimentoCategoriaID { get; set; }
 
-        public int estabelecimentoID { get; set; }
+        public string descricao { get; set; }
 
-        public int categoriaID { get; set; }
-
-        public virtual estabelecimento estabelecimento{ get; set; }
-
-        public virtual categoria categoria{ get; set; }
+        public virtual IEnumerable<estabelecimento> estabelecimentos{ get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace web.Models.Cliente
         [ForeignKey("clienteID")]
         public virtual cliente cliente { get; set; }
 
-        [ForeignKey("categoriaID")]
+        [ForeignKey("enderecoID")]
         public virtual endereco endereco { get; set; }
     }
 }

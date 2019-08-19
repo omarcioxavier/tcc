@@ -2,7 +2,6 @@
 {
     public enum enumModulos
     {
-        compra = 1,
-        venda = 2
+        pedido = 1
     }
 }

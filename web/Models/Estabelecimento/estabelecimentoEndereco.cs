@@ -14,8 +14,10 @@ namespace web.Models.Estabelecimento
 
         public int enderecoID { get; set; }
 
+        [ForeignKey("estabelecimentoID")]
         public virtual estabelecimento estabelecimento{ get; set; }
 
+        [ForeignKey("enderecoID")]
         public virtual endereco endereco{ get; set; }
     }
 }
