@@ -13,7 +13,7 @@ namespace web.Repository.DBConn
     public class DBConn : DbContext
     {
         #region Construtores
-        public DBConn() : base("webConnStrg") { }
+        public DBConn() : base("tcc_db") { }
 
         public static DBConn Create()
         {
