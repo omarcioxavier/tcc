@@ -262,23 +262,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Services\" />
-    <Folder Include="Views\cidade\" />
-    <Folder Include="Views\clienteCategoria\" />
-    <Folder Include="Views\clienteEndereco\" />
-    <Folder Include="Views\cliente\" />
-    <Folder Include="Views\endereco\" />
-    <Folder Include="Views\entregaController\" />
-    <Folder Include="Views\entrega\" />
-    <Folder Include="Views\estabelecimentoCategoria\" />
-    <Folder Include="Views\estabelecimentoEndereco\" />
-    <Folder Include="Views\estabelecimentoProduto\" />
-    <Folder Include="Views\estabelecimento\" />
-    <Folder Include="Views\estado\" />
-    <Folder Include="Views\log\" />
-    <Folder Include="Views\pedido\" />
-    <Folder Include="Views\produtoCategoria\" />
-    <Folder Include="Views\produtoPedido\" />
-    <Folder Include="Views\produto\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
