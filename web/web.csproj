@@ -159,7 +159,24 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\Cliente\clienteCategoriaController.cs" />
+    <Compile Include="Controllers\Cliente\clienteController.cs" />
+    <Compile Include="Controllers\Cliente\clienteEnderecoController.cs" />
+    <Compile Include="Controllers\Endereco\cidadeController.cs" />
+    <Compile Include="Controllers\Endereco\enderecoController.cs" />
+    <Compile Include="Controllers\Endereco\estadoController.cs" />
+    <Compile Include="Controllers\Entrega\entregaController.cs" />
+    <Compile Include="Controllers\Entrega\entregaEnderecoController.cs" />
+    <Compile Include="Controllers\Estabelecimento\estabelecimentoCategoriaController.cs" />
+    <Compile Include="Controllers\Estabelecimento\estabelecimentoController.cs" />
+    <Compile Include="Controllers\Estabelecimento\estabelecimentoEnderecoController.cs" />
+    <Compile Include="Controllers\Estabelecimento\estabelecimentoProdutoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\logController.cs" />
+    <Compile Include="Controllers\Pedido\pedidoController.cs" />
+    <Compile Include="Controllers\Pedido\produtoPedidoController.cs" />
+    <Compile Include="Controllers\Produto\produtoCategoriaController.cs" />
+    <Compile Include="Controllers\Produto\produtoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -245,6 +262,23 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Services\" />
+    <Folder Include="Views\cidade\" />
+    <Folder Include="Views\clienteCategoria\" />
+    <Folder Include="Views\clienteEndereco\" />
+    <Folder Include="Views\cliente\" />
+    <Folder Include="Views\endereco\" />
+    <Folder Include="Views\entregaController\" />
+    <Folder Include="Views\entrega\" />
+    <Folder Include="Views\estabelecimentoCategoria\" />
+    <Folder Include="Views\estabelecimentoEndereco\" />
+    <Folder Include="Views\estabelecimentoProduto\" />
+    <Folder Include="Views\estabelecimento\" />
+    <Folder Include="Views\estado\" />
+    <Folder Include="Views\log\" />
+    <Folder Include="Views\pedido\" />
+    <Folder Include="Views\produtoCategoria\" />
+    <Folder Include="Views\produtoPedido\" />
+    <Folder Include="Views\produto\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
