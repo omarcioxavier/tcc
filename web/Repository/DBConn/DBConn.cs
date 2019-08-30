@@ -13,9 +13,12 @@ namespace web.Repository.DBConn
     public class DBConn : DbContext
     {
         #region Construtores
-        public DBConn() : base("tcc_db") { }
+        public DBConn() : base("tcc_db")
+        {
+            this.Configuration.ProxyCreationEnabled = false;
+        }
 
-        public static DBConn Create()
+        public DBConn Create()
         {
             return new DBConn();
         }
@@ -50,9 +53,9 @@ namespace web.Repository.DBConn
 
         public DbSet<produtoCategoria> produtosCategorias { get; set; }
 
-        public DbSet<entrega> entregas{ get; set; }
-        
-        public DbSet<entregaEndereco> entregasEnderecos{ get; set; }
+        public DbSet<entrega> entregas { get; set; }
+
+        public DbSet<entregaEndereco> entregasEnderecos { get; set; }
 
         public DbSet<log> logs { get; set; }
 
