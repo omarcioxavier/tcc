@@ -8,7 +8,7 @@ namespace web.Models.Cliente
     public class clienteCategoria
     {
         [Key]
-        public int categoriaClienteID { get; set; }
+        public int clienteCategoriaID { get; set; }
 
         public string descricao { get; set; }
 

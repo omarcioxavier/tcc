@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using web.Repository.DBConn;
 
@@ -20,7 +21,14 @@ namespace web.Controllers.Cliente
         [HttpGet]
         public JsonResult getAll()
         {
-            return Json(_context.clientesCategorias, JsonRequestBehavior.AllowGet);
+            try
+            {
+                return Json(_context.clientesCategorias, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         /// <summary>
@@ -31,7 +39,14 @@ namespace web.Controllers.Cliente
         [HttpGet]
         public JsonResult getById(int id)
         {
-            return Json(_context.clientesCategorias.Where(c => c.categoriaClienteID == id), JsonRequestBehavior.AllowGet);
+            try
+            {
+                return Json(_context.clientesCategorias.Where(c => c.clienteCategoriaID == id), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
