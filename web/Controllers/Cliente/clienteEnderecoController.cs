@@ -30,7 +30,7 @@ namespace web.Controllers.Cliente
         [HttpGet]
         public JsonResult getById(int id)
         {
-            return Json(_context.clientesEnderecos.Where(e => e.enderecoClienteID == id), JsonRequestBehavior.AllowGet);
+            return Json(_context.clientesEnderecos.Where(e => e.clienteEnderecoID == id), JsonRequestBehavior.AllowGet);
         }
     }
 }

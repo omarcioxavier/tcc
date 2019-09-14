@@ -8,7 +8,7 @@ namespace web.Models.Cliente
     public class clienteEndereco
     {
         [Key]
-        public int enderecoClienteID { get; set; }
+        public int clienteEnderecoID { get; set; }
 
         public int clienteID { get; set; }
 

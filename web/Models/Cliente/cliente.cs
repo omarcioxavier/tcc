@@ -19,9 +19,9 @@ namespace web.Models.Cliente
 
         public bool ativo { get; set; }
 
-        public int cllienteCategoriaID { get; set; }
+        public int clienteCategoriaID { get; set; }
 
-        [ForeignKey("cllienteCategoriaID")]
+        [ForeignKey("clienteCategoriaID")]
         public virtual clienteCategoria clienteCategoria{ get; set; }
 
         public virtual IEnumerable<pedido> pedidos{ get; set; }

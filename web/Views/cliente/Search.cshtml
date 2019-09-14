@@ -1,0 +1,15 @@
+﻿@model web.Models.Cliente.cliente
+
+@using (Html.BeginForm("getByParameters", "cliente", FormMethod.Get))
+{
+    <fieldset>
+        <legend>Pesquisa</legend>
+        <form>
+            <div class="form-group">
+                <label>Nome</label>
+                @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "form-control form-control-sm" } })
+            </div>
+            <button type="submit" class="btn btn-sm btn-secondary">Pesquisar</button>
+        </form>
+    </fieldset>
+}

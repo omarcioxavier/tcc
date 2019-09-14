@@ -987,13 +987,13 @@ INSERT INTO cidade (nome, estadoID) VALUES
 ('Guarinos', 9),
 ('Heitoraí', 9),
 ('Hidrolândia', 9),
-('Hidrolina', 9),
+('Hidrolina', 9);
+INSERT INTO cidade (nome, estadoID) VALUES
 ('Iaciara', 9),
 ('Inaciolândia', 9),
 ('Indiara', 9),
 ('Inhumas', 9),
-('Ipameri', 9);
-INSERT INTO cidade (nome, estadoID) VALUES
+('Ipameri', 9),
 ('Ipiranga de Goiás', 9),
 ('Iporá', 9),
 ('Israelândia', 9),
@@ -1977,7 +1977,8 @@ INSERT INTO cidade (nome, estadoID) VALUES
 ('Joanésia', 11),
 ('João Monlevade', 11),
 ('João Pinheiro', 11),
-('Joaquim Felício', 11),
+('Joaquim Felício', 11);
+INSERT INTO cidade (nome, estadoID) VALUES
 ('Jordânia', 11),
 ('José Gonçalves de Minas', 11),
 ('José Raydan', 11),
@@ -1988,8 +1989,7 @@ INSERT INTO cidade (nome, estadoID) VALUES
 ('Juruaia', 11),
 ('Juvenília', 11),
 ('Ladainha', 11),
-('Lagamar', 11);
-INSERT INTO cidade (nome, estadoID) VALUES
+('Lagamar', 11),
 ('Lagoa da Prata', 11),
 ('Lagoa dos Patos', 11),
 ('Lagoa Dourada', 11),
@@ -2967,7 +2967,8 @@ INSERT INTO cidade (nome, estadoID) VALUES
 ('Jundiaí do Sul', 18),
 ('Juranda', 18),
 ('Jussara', 18),
-('Kaloré', 18),
+('Kaloré', 18);
+INSERT INTO cidade (nome, estadoID) VALUES
 ('Lapa', 18),
 ('Laranjal', 18),
 ('Laranjeiras do Sul', 18),
@@ -2989,8 +2990,7 @@ INSERT INTO cidade (nome, estadoID) VALUES
 ('Mangueirinha', 18),
 ('Manoel Ribas', 18),
 ('Marechal Cândido Rondon', 18),
-('Maria Helena', 18);
-INSERT INTO cidade (nome, estadoID) VALUES
+('Maria Helena', 18),
 ('Marialva', 18),
 ('Marilândia do Sul', 18),
 ('Marilena', 18),
@@ -3957,7 +3957,8 @@ INSERT INTO cidade (nome, estadoID) VALUES
 ('Charqueadas', 23),
 ('Charrua', 23),
 ('Chiapeta', 23),
-('Chuí', 23),
+('Chuí', 23);
+INSERT INTO cidade (nome, estadoID) VALUES
 ('Chuvisca', 23),
 ('Cidreira', 23),
 ('Ciríaco', 23),
@@ -3981,8 +3982,7 @@ INSERT INTO cidade (nome, estadoID) VALUES
 ('David Canabarro', 23),
 ('Derrubadas', 23),
 ('Dezesseis de Novembro', 23),
-('Dilermando de Aguiar', 23);
-INSERT INTO cidade (nome, estadoID) VALUES
+('Dilermando de Aguiar', 23),
 ('Dois Irmãos', 23),
 ('Dois Irmãos das Missões', 23),
 ('Dois Lajeados', 23),
@@ -4947,7 +4947,8 @@ INSERT INTO cidade (nome, estadoID) VALUES
 ('Ilhabela', 26),
 ('Indaiatuba', 26),
 ('Indiana', 26),
-('Indiaporã', 26),
+('Indiaporã', 26);
+INSERT INTO cidade (nome, estadoID) VALUES
 ('Inúbia Paulista', 26),
 ('Ipaussu', 26),
 ('Iperó', 26),
@@ -4977,8 +4978,7 @@ INSERT INTO cidade (nome, estadoID) VALUES
 ('Itaquaquecetuba', 26),
 ('Itararé', 26),
 ('Itariri', 26),
-('Itatiba', 26);
-INSERT INTO cidade (nome, estadoID) VALUES
+('Itatiba', 26),
 ('Itatinga', 26),
 ('Itirapina', 26),
 ('Itirapuã', 26),
