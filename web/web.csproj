@@ -169,6 +169,7 @@
     <Compile Include="Controllers\Endereco\estadoController.cs" />
     <Compile Include="Controllers\Entrega\entregaController.cs" />
     <Compile Include="Controllers\Entrega\entregaEnderecoController.cs" />
+    <Compile Include="Controllers\Erro\erroController.cs" />
     <Compile Include="Controllers\Estabelecimento\estabelecimentoCategoriaController.cs" />
     <Compile Include="Controllers\Estabelecimento\estabelecimentoController.cs" />
     <Compile Include="Controllers\Estabelecimento\estabelecimentoEnderecoController.cs" />
@@ -179,6 +180,7 @@
     <Compile Include="Controllers\Pedido\produtoPedidoController.cs" />
     <Compile Include="Controllers\Produto\produtoCategoriaController.cs" />
     <Compile Include="Controllers\Produto\produtoController.cs" />
+    <Compile Include="Controllers\Usuario\usuarioController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -187,12 +189,17 @@
     <Compile Include="Migrations\201909141505506_First.Designer.cs">
       <DependentUpon>201909141505506_First.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909211428489_usuaio.cs" />
+    <Compile Include="Migrations\201909211428489_usuaio.Designer.cs">
+      <DependentUpon>201909211428489_usuaio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente\clienteCategoria.cs" />
     <Compile Include="Models\Cliente\cliente.cs" />
     <Compile Include="Models\Cliente\clienteEndereco.cs" />
     <Compile Include="Models\Entrega\entrega.cs" />
     <Compile Include="Models\Entrega\entregaEndereco.cs" />
+    <Compile Include="Models\Usuario\usuario.cs" />
     <Compile Include="Models\Utils\Modulo\modulo.cs" />
     <Compile Include="Models\Pedido\pedido.cs" />
     <Compile Include="Models\Estabelecimento\estabelecimentoProduto.cs" />
@@ -209,10 +216,11 @@
     <Compile Include="Models\Log\log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DBConn\DBConn.cs" />
-    <Compile Include="ViewModel\Cliente\ListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Assets\Login\css\login.css" />
+    <Content Include="Assets\Login\js\login.js" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\animate.min.css">
       <DependentUpon>animate.css</DependentUpon>
@@ -285,6 +293,10 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js">
+      <DependentUpon>moment.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -318,11 +330,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\cliente\Search.cshtml" />
+    <Content Include="Views\cliente\Details.cshtml" />
+    <Content Include="Views\Usuario\Default.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Services\" />
+    <Folder Include="Utils\" />
+    <Folder Include="ViewModel\Cliente\" />
+    <Folder Include="Views\erro\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -338,6 +354,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201909141505506_First.resx">
       <DependentUpon>201909141505506_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909211428489_usuaio.resx">
+      <DependentUpon>201909211428489_usuaio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

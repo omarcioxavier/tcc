@@ -10,5 +10,71 @@
     "inputFiles": [
       "Content/animate.css"
     ]
+  },
+  {
+    "outputFileName": "Content/hamburgers.min.css",
+    "inputFiles": [
+      "Content/hamburgers.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/animsition.min.css",
+    "inputFiles": [
+      "Content/animsition.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/animsition.min.js",
+    "inputFiles": [
+      "Scripts/animsition.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/select2.min.css",
+    "inputFiles": [
+      "Content/select2.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/daterangepicker.min.css",
+    "inputFiles": [
+      "Content/daterangepicker.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/select2.min.js",
+    "inputFiles": [
+      "Scripts/select2.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/moment.min.js",
+    "inputFiles": [
+      "Scripts/moment.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/daterangepicker.min.js",
+    "inputFiles": [
+      "Scripts/daterangepicker.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/countdowntime.min.js",
+    "inputFiles": [
+      "Scripts/countdowntime.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/icon-font.min.min.css",
+    "inputFiles": [
+      "Content/icon-font.min.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/sweetalert/sweet-alert.min.css",
+    "inputFiles": [
+      "Content/sweetalert/sweet-alert.css"
+    ]
   }
 ]

@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using web.Models.Pedido;
+using web.Models.Usuario;
 
 namespace web.Models.Estabelecimento
 {
@@ -29,5 +30,7 @@ namespace web.Models.Estabelecimento
         public virtual IEnumerable<pedido> pedidos{ get; set; }
 
         public virtual IEnumerable<estabelecimentoProduto> estabelecimentosProdutos{ get; set; }
+        
+        public virtual IEnumerable<usuario> usuarios{ get; set; }
     }
 }
