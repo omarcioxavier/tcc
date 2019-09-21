@@ -34,7 +34,7 @@ namespace web.Controllers.Usuario
 
                 if (usuario != null)
                 {
-                    updateSessionState(usuario, true);
+                    Session["Name"] = usuario.login;
 
                     return RedirectToAction("list", "cliente");
                 }
@@ -42,7 +42,6 @@ namespace web.Controllers.Usuario
                 {
                     return View("Default");
                 }
-
             }
             catch (Exception ex)
             {
@@ -50,32 +49,11 @@ namespace web.Controllers.Usuario
             }
         }
 
-        /// <summary>
-        /// Atualiza o estado da sessão do usuário
-        /// </summary>
-        /// <param name="usuarioID"></param>
-        /// <param name="status"></param>
-        [HttpPut]
-        public void updateSessionState(usuario usuario, bool status)
+        public ActionResult logout()
         {
-            try
-            {
-                if (status)
-                {
-                    // USUÁRIO LOGADO
-                    usuario.estadoSessao = true;
-                }
-                else
-                {
-                    // USUÁRIO NÃO LOGADO
-                    usuario.estadoSessao = false;
-                }
-                _context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Default");
         }
 
         public ActionResult NaoEncontrado(usuario usuario)

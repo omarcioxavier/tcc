@@ -16,8 +16,6 @@ namespace web.Models.Usuario
 
         public bool ativo { get; set; }
 
-        public bool estadoSessao { get; set; }
-
         public int estabelecimentoID { get; set; }
 
         [ForeignKey("estabelecimentoID")]

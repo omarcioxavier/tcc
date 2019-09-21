@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201909211428489_usuaio.Designer.cs">
       <DependentUpon>201909211428489_usuaio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909211736172_usuario2.cs" />
+    <Compile Include="Migrations\201909211736172_usuario2.Designer.cs">
+      <DependentUpon>201909211736172_usuario2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente\clienteCategoria.cs" />
     <Compile Include="Models\Cliente\cliente.cs" />
@@ -220,7 +224,6 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Assets\Login\css\login.css" />
-    <Content Include="Assets\Login\js\login.js" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\animate.min.css">
       <DependentUpon>animate.css</DependentUpon>
@@ -335,6 +338,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\Login\js\" />
     <Folder Include="Services\" />
     <Folder Include="Utils\" />
     <Folder Include="ViewModel\Cliente\" />
@@ -357,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909211428489_usuaio.resx">
       <DependentUpon>201909211428489_usuaio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909211736172_usuario2.resx">
+      <DependentUpon>201909211736172_usuario2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
