@@ -6,6 +6,7 @@ using web.Models.Estabelecimento;
 using web.Models.Log;
 using web.Models.Pedido;
 using web.Models.Produto;
+using web.Models.Usuario;
 using web.Models.Utils.Modulo;
 
 namespace web.Repository.DBConn
@@ -60,6 +61,8 @@ namespace web.Repository.DBConn
         public DbSet<log> logs { get; set; }
 
         public DbSet<modulo> modulos { get; set; }
+
+        public DbSet<usuario> usuarios { get; set; }
         #endregion
     }
 }

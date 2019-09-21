@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using web.Models.Cliente;
+using web.Models.Usuario;
 using web.Repository.DBConn;
 
 namespace web.Controllers.Cliente
@@ -55,12 +55,12 @@ namespace web.Controllers.Cliente
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult List()
+        public ActionResult list()
         {
             try
             {
-                var result = _context.clientes.OrderBy(c => c.nome).ToList();
-                return View(result);
+                var clientes = _context.clientes.OrderBy(c => c.nome).ToList();
+                return View(clientes);
             }
             catch (Exception ex)
             {
@@ -68,19 +68,12 @@ namespace web.Controllers.Cliente
             }
         }
 
-        [HttpGet]
-        public ActionResult getByParameters(cliente obj)
+        public ActionResult details(int id)
         {
             try
             {
-                var result = _context.clientes.OrderBy(c => c.nome).ToList();
-                
-                if (!string.IsNullOrEmpty(obj.nome))
-                {
-                    result = result.Where(r => r.nome == obj.nome).ToList();
-                }
-
-                return View(result);
+                var cliente = _context.clientes.Where(c => c.clienteID == id).SingleOrDefault();
+                return View(cliente);
             }
             catch (Exception ex)
             {
