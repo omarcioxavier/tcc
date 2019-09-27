@@ -9,96 +9,94 @@
     <div class="row">
         <div class="col-12">
             <br />
-            <h4>Clientes</h4>
-            <hr />
-            <div class="row">
-                <div class="col-12">
-                    <div class="form-group row">
-                        <div class="col-6">
-                            <label>Nome</label>
-                            <input class="form-control form-control-sm" type="text">
-                        </div>
-                        <div class="col-6">
-                            <label>E-Mail</label>
-                            <input class="form-control form-control-sm" type="text">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-1">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
-                                <label class="custom-control-label" for="customCheck1">Ativo</label>
+            <div class="card">
+                <div class="card-header">
+                    <b>Clientes</b>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col">
+                                    <label>Nome</label>
+                                    <input class="form-control form-control-sm" type="text">
+                                </div>
+                                <div class="col">
+                                    <label>Celular</label>
+                                    <input class="form-control form-control-sm celular" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-1">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
+                                        <label class="custom-control-label" for="customCheck1">Ativo</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <input type="button" value="Pesquisar" class="btn btn-sm btn-success" />
+                                </div>
                             </div>
                         </div>
                     </div>
 
+                    <br />
+
                     <div class="row">
-                        <div class="col-md-1">
-                            <input type="button" value="Pesquisar" class="btn btn-sm btn-success" />
+                        <div class="col-12">
+                            <table class="table table-sm table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>
+                                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                                            <label>Nome</label>
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                            <label>Celular</label>
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-adjust" aria-hidden="true"></i>
+                                            <label>Status</label>
+                                        </th>
+                                        <th class="fit-column">
+                                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                            <label>Mais</label>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.nome)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.numeroCelular)
+                                            </td>
+                                            <td>
+                                                @if (item.ativo)
+                                                {
+                                                    <span class="badge badge-success">Ativo</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge badge-danger">Inativo</span>
+                                                }
+                                            </td>
+                                            <td class="fit-column">
+                                                @Html.ActionLink("Detalhes", "Details", new { id = item.clienteID }, new { @class = "btn btn-sm btn-outline-primary" })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <br />
-
-            <div class="row">
-                <div class="col-12">
-                    <table class="table table-sm table-hover">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>
-                                    <i class="fa fa-user-o" aria-hidden="true"></i>
-                                    <label>Nome</label>
-                                </th>
-                                <th>
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <label>Celular</label>
-                                </th>
-                                <th>
-                                    <i class="fa fa-at" aria-hidden="true"></i>
-                                    <label>E-mail</label>
-                                </th>
-                                <th>
-                                    <i class="fa fa-adjust" aria-hidden="true"></i>
-                                    <label>Status</label>
-                                </th>
-                                <th>
-                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                                    <label>Mais</label>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.nome)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.numeroCelular)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.email)
-                                    </td>
-                                    <td>
-                                        @if (item.ativo)
-                                        {
-                                            <span class="badge badge-success">Ativo</span>
-                                        }
-                                        else
-                                        {
-                                            <span class="badge badge-warning">Inativo</span>
-                                        }
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Detalhes", "Details", new { id = item.clienteID }, new { @class = "btn btn-sm btn-outline-primary" })
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>

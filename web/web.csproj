@@ -161,7 +161,6 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\Cliente\clienteCategoriaController.cs" />
     <Compile Include="Controllers\Cliente\clienteController.cs" />
     <Compile Include="Controllers\Cliente\clienteEnderecoController.cs" />
     <Compile Include="Controllers\Endereco\cidadeController.cs" />
@@ -197,8 +196,11 @@
     <Compile Include="Migrations\201909211736172_usuario2.Designer.cs">
       <DependentUpon>201909211736172_usuario2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909272232041_RemoverCategoriaCliente.cs" />
+    <Compile Include="Migrations\201909272232041_RemoverCategoriaCliente.Designer.cs">
+      <DependentUpon>201909272232041_RemoverCategoriaCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Cliente\clienteCategoria.cs" />
     <Compile Include="Models\Cliente\cliente.cs" />
     <Compile Include="Models\Cliente\clienteEndereco.cs" />
     <Compile Include="Models\Entrega\entrega.cs" />
@@ -223,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Assets\Geral\geral.js" />
     <Content Include="Assets\Login\css\login.css" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\animate.min.css">
@@ -291,6 +294,26 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
+    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
+    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.js" />
+    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.js" />
+    <Content Include="Scripts\inputmask\global\window.js" />
+    <Content Include="Scripts\inputmask\inputmask.date.extensions.js" />
+    <Content Include="Scripts\inputmask\inputmask.extensions.js" />
+    <Content Include="Scripts\inputmask\inputmask.js" />
+    <Content Include="Scripts\inputmask\inputmask.numeric.extensions.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.js" />
+    <Content Include="Scripts\inputmask\min\bindings\inputmask.binding.min.js" />
+    <Content Include="Scripts\inputmask\min\dependencyLibs\inputmask.dependencyLib.jqlite.min.js" />
+    <Content Include="Scripts\inputmask\min\dependencyLibs\inputmask.dependencyLib.jquery.min.js" />
+    <Content Include="Scripts\inputmask\min\dependencyLibs\inputmask.dependencyLib.min.js" />
+    <Content Include="Scripts\inputmask\min\global\window.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask.date.extensions.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask.extensions.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask.min.js" />
+    <Content Include="Scripts\inputmask\min\inputmask.numeric.extensions.min.js" />
+    <Content Include="Scripts\inputmask\min\jquery.inputmask.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -334,7 +357,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\cliente\Details.cshtml" />
-    <Content Include="Views\Usuario\Default.cshtml" />
+    <Content Include="Views\usuario\Default.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -364,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909211736172_usuario2.resx">
       <DependentUpon>201909211736172_usuario2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909272232041_RemoverCategoriaCliente.resx">
+      <DependentUpon>201909272232041_RemoverCategoriaCliente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

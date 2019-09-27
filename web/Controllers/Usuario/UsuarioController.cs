@@ -18,7 +18,14 @@ namespace web.Controllers.Usuario
         // GET: Usuario
         public ActionResult Default()
         {
-            return View();
+            if (Session.IsNewSession)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("list", "cliente");
+            }
         }
 
         /// <summary>
@@ -40,6 +47,7 @@ namespace web.Controllers.Usuario
                 }
                 else
                 {
+                    TempData["message"] = "erro";
                     return View("Default");
                 }
             }
