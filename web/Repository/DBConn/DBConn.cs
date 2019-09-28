@@ -28,8 +28,6 @@ namespace web.Repository.DBConn
         #region Tabelas
         public DbSet<cliente> clientes { get; set; }
 
-        public DbSet<clienteCategoria> clientesCategorias { get; set; }
-
         public DbSet<clienteEndereco> clientesEnderecos { get; set; }
 
         public DbSet<estabelecimento> estabelecimentos { get; set; }

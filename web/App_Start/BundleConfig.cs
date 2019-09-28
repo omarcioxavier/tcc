@@ -8,6 +8,12 @@ namespace web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                        "~/Scripts/inputmask/inputmask.js",
+                        "~/Scripts/inputmask/jquery.inputmask.js",
+                        "~/Scripts/inputmask/inputmask.extensions.js",
+                        "~/Scripts/inputmask/inputmask.date.extensions.js",
+                        "~/Scripts/inputmask/inputmask.numeric.extensions.js",
+                        "~/Scripts/jquery.mask.min.js",
                         "~/Scripts/jquery-3.4.1.slim.min.js"));
 
             // Use a versão em desenvolvimento do Modernizr para desenvolver e aprender com ela. Após isso, quando você estiver

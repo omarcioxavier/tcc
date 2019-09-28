@@ -15,3 +15,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.fit-column {
+    white-space: nowrap;
+    width: 5%;
+}

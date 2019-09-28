@@ -5,54 +5,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    <b>Detalhes</b>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Nome</label>
+                            <input type="text" class="form-control disabled" value="@Html.DisplayFor(model => model.nome)" />
+                        </div>
 
-<div>
-    <h4>cliente</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.clienteCategoria.descricao)
-        </dt>
+                        <div class="col-md-4">
+                            <label>Celular</label>
+                            <input type="text" class="form-control disabled" value="@Html.DisplayFor(model => model.numeroCelular)" />
+                        </div>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.clienteCategoria.descricao)
-        </dd>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>E-Mail</label>
+                            <input type="text" class="form-control disabled" value="@Html.DisplayFor(model => model.email)" />
+                        </div>
+                        <div class="col-md-1">
+                            <label>Status</label>
+                            @if (Model.ativo)
+                            {
+                                <span class="badge badge-success">Ativo</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-danger">Inativo</span>
+                            }
+                        </div>
+                    </div>
+                    <br />
+                    @Html.ActionLink("Pedidos", "Details", new { id = Model.clienteID }, new { @class = "btn btn-sm btn-success",  title="Ver pedidos realizados por este cliente" })
+                    <hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nome)
-        </dt>
+                    @Html.ActionLink("Voltar", "List", null, new { @class = "btn btn-sm btn-outline-warning" })
 
-        <dd>
-            @Html.DisplayFor(model => model.nome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.numeroCelular)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.numeroCelular)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ativo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ativo)
-        </dd>
-
-    </dl>
+                    <div class="card-body"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Voltar", "List")
-</p>

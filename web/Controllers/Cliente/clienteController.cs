@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using web.Models.Usuario;
 using web.Repository.DBConn;
 
 namespace web.Controllers.Cliente
@@ -68,12 +67,24 @@ namespace web.Controllers.Cliente
             }
         }
 
-        public ActionResult details(int id)
+        public ActionResult details(int clienteId)
         {
             try
             {
-                var cliente = _context.clientes.Where(c => c.clienteID == id).SingleOrDefault();
+                var cliente = _context.clientes.Where(c => c.clienteID == clienteId).SingleOrDefault();
                 return View(cliente);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public ActionResult pedidos(int clienteId)
+        {
+            try
+            {
+                return null;
             }
             catch (Exception ex)
             {
