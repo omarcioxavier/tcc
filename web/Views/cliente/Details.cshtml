@@ -1,0 +1,57 @@
+﻿@model web.Models.Cliente.cliente
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    <b>Detalhes</b>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Nome</label>
+                            <input type="text" class="form-control disabled" value="@Html.DisplayFor(model => model.nome)" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Celular</label>
+                            <input type="text" class="form-control disabled" value="@Html.DisplayFor(model => model.numeroCelular)" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>E-Mail</label>
+                            <input type="text" class="form-control disabled" value="@Html.DisplayFor(model => model.email)" />
+                        </div>
+                        <div class="col-md-1">
+                            <label>Status</label>
+                            @if (Model.ativo)
+                            {
+                                <span class="badge badge-success">Ativo</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-danger">Inativo</span>
+                            }
+                        </div>
+                    </div>
+                    <br />
+                    @Html.ActionLink("Pedidos", "Details", new { id = Model.clienteID }, new { @class = "btn btn-sm btn-success",  title="Ver pedidos realizados por este cliente" })
+                    <hr />
+
+                    @Html.ActionLink("Voltar", "List", null, new { @class = "btn btn-sm btn-outline-warning" })
+
+                    <div class="card-body"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
