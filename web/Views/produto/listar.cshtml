@@ -1,4 +1,4 @@
-﻿@model IEnumerable<web.Models.Produto.produto>
+﻿@model web.ViewModel.Produto.produtoListarViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,25 +16,21 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group row">
-                                <div class="col">
+                                <div class="col-6">
                                     <label>Descrição</label>
-                                    <input class="form-control form-control-sm" type="text">
+                                    <input class="form-control form-control-sm col-12" type="text">
                                 </div>
-                                <div class="col">
+                                <div class="col-3">
                                     <label>Categoria</label>
-                                    <select name="cars" class="form-control form-control-sm">
-                                        <option value="1">Categoria</option>
-                                        <option value="2">Categoria</option>
-                                        <option value="3">Categoria</option>
-                                    </select>
+                                    @Html.DropDownListFor(model => model.produtoCategorias.FirstOrDefault().produtoCategoriaID, new SelectList(Model.produtoCategorias, "produtoCategoriaID", "descricao"), "Categoria", new { @class = "form-control form-control-sm col-12" })
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-1">
+                                <div class="col-1">
                                     <input type="button" value="Pesquisar" class="btn btn-sm btn-success" />
                                 </div>
-                                <div class="col-md-1">
-                                    @Html.ActionLink("Adicionar", "Create", null, new { @class = "btn btn-sm btn-outline-primary" })
+                                <div class="col-1">
+                                    @Html.ActionLink("Adicionar", "novo", null, new { @class = "btn btn-sm btn-outline-primary" })
                                 </div>
                             </div>
                         </div>
@@ -46,31 +42,31 @@
                             <table class="table table-sm table-hover">
                                 <tr>
                                     <th>
-                                        <i class="fa fa-list" aria-hidden="true"></i>
+                                        <i class="fa fa-list"></i>
                                         Descrição
                                     </th>
                                     <th>
-                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                        <i class="fa fa-money"></i>
                                         Preço Unitário
                                     </th>
                                     <th>
-                                        <i class="fa fa-adjust" aria-hidden="true"></i>
+                                        <i class="fa fa-adjust"></i>
                                         Status
                                     </th>
                                     <th>
-                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                        <i class="fa fa-plus-circle"></i>
                                         Mais
                                     </th>
                                 </tr>
 
-                                @foreach (var item in Model)
+                                @foreach (var item in Model.produtos)
                                 {
                                     <tr>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.descricao)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.precoUnitario)
+                                            @Html.DisplayFor(modelItem => item.precoUnitario, new { @class = "money" })
                                         </td>
                                         <td>
                                             @if (item.ativo)
@@ -83,6 +79,8 @@
                                             }
                                         </td>
                                         <td class="fit-column">
+                                            @*@Html.ActionLink("Editar", "Edit", "Item", new { id = item.it_cod }, new { @class = "btn btn-primary btn-sm" })*@
+
                                             @Html.ActionLink("Editar", "editar", new { id = item.produtoID }, new { @class = "btn btn-sm btn-outline-primary" })
 
                                             @if (item.ativo)

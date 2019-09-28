@@ -222,6 +222,8 @@
     <Compile Include="Models\Log\log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DBConn\DBConn.cs" />
+    <Compile Include="ViewModel\Produto\produtoFormViewModel.cs" />
+    <Compile Include="ViewModel\Produto\produtoListarViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -359,6 +361,7 @@
     <Content Include="Views\cliente\detalhes.cshtml" />
     <Content Include="Views\usuario\Default.cshtml" />
     <Content Include="Views\produto\listar.cshtml" />
+    <Content Include="Views\produto\form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

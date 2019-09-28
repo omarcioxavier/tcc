@@ -26,7 +26,7 @@ namespace web.Controllers.Usuario
             }
             else
             {
-                return RedirectToAction("list", "cliente");
+                return RedirectToAction("listar", "produto");
             }
         }
 
@@ -45,10 +45,9 @@ namespace web.Controllers.Usuario
                 {
                     Session["UserId"] = usuario.usuarioID;
                     Session["UserName"] = usuario.login;
-                    var estabelecimento = new estabelecimentoController().getById(usuario.estabelecimentoID);
-                    Session["EstabelecimentoId"] = estabelecimento.estabelecimentoID;
+                    Session["EstabelecimentoId"] = new estabelecimentoController().getById(usuario.estabelecimentoID).estabelecimentoID;
 
-                    return RedirectToAction("listar", "cliente");
+                    return RedirectToAction("listar", "produto");
                 }
                 else
                 {

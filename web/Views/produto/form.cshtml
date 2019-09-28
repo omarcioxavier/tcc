@@ -1,0 +1,54 @@
+﻿@model web.ViewModel.Produto.produtoFormViewModel
+
+@{
+    ViewBag.Title = "form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    <b>@Model.titulo</b>
+                </div>
+                @using (Html.BeginForm("salvar", "produto", new { id = "form" }))
+                {
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
+                                <label>Descrição</label>
+                                @Html.EditorFor(model => model.produto.descricao, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                            </div>
+
+                            <div class="col-md-3">
+                                <label>Valor</label>
+                                @Html.EditorFor(model => model.produto.precoUnitario, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <label>Categoria</label>
+                                @Html.DropDownListFor(model => model.produto.produtoCategoriaID, new SelectList(Model.produtoCategorias, "produtoCategoriaID", "descricao"), null, new { @class = "form-control-sm form-control col-12" })
+                            </div>
+                            <div class="col-1">
+                                <label>Status</label><br />
+                                @Html.CheckBoxFor(model => model.produto.ativo, htmlAttributes: new { @id = "SwitchStatus", @onclick = "SetStatusLabel()" })
+                                <label id="lblStatus"></label>
+                            </div>
+                        </div>
+                        <br />
+                        <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                        <hr />
+
+                        @Html.ActionLink("Voltar", "listar", null, new { @class = "btn btn-sm btn-outline-warning" })
+
+                        <div class="card-body"></div>
+                    </div>
+                    @Html.HiddenFor(model => model.produto.produtoID)
+                }
+            </div>
+        </div>
+    </div>
+</div>
