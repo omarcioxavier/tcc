@@ -1,7 +1,7 @@
 ﻿@model web.Models.Cliente.cliente
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -44,10 +44,10 @@
                         </div>
                     </div>
                     <br />
-                    @Html.ActionLink("Pedidos", "Details", new { id = Model.clienteID }, new { @class = "btn btn-sm btn-success",  title="Ver pedidos realizados por este cliente" })
+                    @Html.ActionLink("Pedidos", "detalhes", new { id = Model.clienteID }, new { @class = "btn btn-sm btn-success",  title="Ver pedidos realizados por este cliente" })
                     <hr />
 
-                    @Html.ActionLink("Voltar", "List", null, new { @class = "btn btn-sm btn-outline-warning" })
+                    @Html.ActionLink("Voltar", "listar", null, new { @class = "btn btn-sm btn-outline-warning" })
 
                     <div class="card-body"></div>
                 </div>

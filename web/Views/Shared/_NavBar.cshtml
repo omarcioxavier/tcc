@@ -7,23 +7,23 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
+                @Html.ActionLink("Produtos", "listar", "produto", null, new { @class = "nav-link" })
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#">Pedidos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Entregas</a>
             </li>
             <li>
-                @Html.ActionLink("Clientes", "List", "cliente", null, new { @class = "nav-link" })
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Relatórios</a>
+                @Html.ActionLink("Clientes", "listar", "cliente", null, new { @class = "nav-link" })
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <ul class="navbar-nav mr-auto">
                 <li>
                     <span class="navbar-text">
-                        @Session["Name"].ToString()
+                        @Session["UserName"].ToString()
                     </span>
                 </li>
                 <li>

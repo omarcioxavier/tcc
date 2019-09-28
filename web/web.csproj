@@ -345,7 +345,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\cliente\List.cshtml" />
+    <Content Include="Views\cliente\listar.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -356,8 +356,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\cliente\Details.cshtml" />
+    <Content Include="Views\cliente\detalhes.cshtml" />
     <Content Include="Views\usuario\Default.cshtml" />
+    <Content Include="Views\produto\listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

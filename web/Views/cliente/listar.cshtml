@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<web.Models.Cliente.cliente>
 
 @{
-    ViewBag.Title = "Clientes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -62,7 +61,7 @@
                                             <i class="fa fa-adjust" aria-hidden="true"></i>
                                             <label>Status</label>
                                         </th>
-                                        <th class="fit-column">
+                                        <th>
                                             <i class="fa fa-plus-circle" aria-hidden="true"></i>
                                             <label>Mais</label>
                                         </th>
@@ -89,7 +88,7 @@
                                                 }
                                             </td>
                                             <td class="fit-column">
-                                                @Html.ActionLink("Detalhes", "Details", new { id = item.clienteID }, new { @class = "btn btn-sm btn-outline-primary" })
+                                                @Html.ActionLink("Detalhes", "detalhes", new { id = item.clienteID }, new { @class = "btn btn-sm btn-outline-primary" })
                                             </td>
                                         </tr>
                                     }

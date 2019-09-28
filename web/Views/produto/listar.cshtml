@@ -1,0 +1,106 @@
+﻿@model IEnumerable<web.Models.Produto.produto>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    <b>Produtos</b>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col">
+                                    <label>Descrição</label>
+                                    <input class="form-control form-control-sm" type="text">
+                                </div>
+                                <div class="col">
+                                    <label>Categoria</label>
+                                    <select name="cars" class="form-control form-control-sm">
+                                        <option value="1">Categoria</option>
+                                        <option value="2">Categoria</option>
+                                        <option value="3">Categoria</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <input type="button" value="Pesquisar" class="btn btn-sm btn-success" />
+                                </div>
+                                <div class="col-md-1">
+                                    @Html.ActionLink("Adicionar", "Create", null, new { @class = "btn btn-sm btn-outline-primary" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-sm table-hover">
+                                <tr>
+                                    <th>
+                                        <i class="fa fa-list" aria-hidden="true"></i>
+                                        Descrição
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                        Preço Unitário
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-adjust" aria-hidden="true"></i>
+                                        Status
+                                    </th>
+                                    <th>
+                                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                        Mais
+                                    </th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.descricao)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.precoUnitario)
+                                        </td>
+                                        <td>
+                                            @if (item.ativo)
+                                            {
+                                                <span class="badge badge-success">Ativo</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">Inativo</span>
+                                            }
+                                        </td>
+                                        <td class="fit-column">
+                                            @Html.ActionLink("Editar", "editar", new { id = item.produtoID }, new { @class = "btn btn-sm btn-outline-primary" })
+
+                                            @if (item.ativo)
+                                            {
+                                                @Html.ActionLink("Inativar", "atualizarStatus", new { id = item.produtoID, status = false }, new { @class = "btn btn-sm btn-outline-danger" })
+                                            }
+                                            else
+                                            {
+                                                @Html.ActionLink("Ativar", "atualizarStatus", new { id = item.produtoID, status = true }, new { @class = "btn btn-sm btn-outline-success" })
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using web.Models.Estabelecimento;
 using web.Repository.DBConn;
 
 namespace web.Controllers.Estabelecimento
@@ -28,9 +29,9 @@ namespace web.Controllers.Estabelecimento
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public JsonResult getById(int id)
+        public estabelecimento getById(int id)
         {
-            return Json(_context.estabelecimentos.Where(e => e.estabelecimentoID == id), JsonRequestBehavior.AllowGet);
+            return _context.estabelecimentos.Where(e => e.estabelecimentoID == id).SingleOrDefault();
         }
     }
 }

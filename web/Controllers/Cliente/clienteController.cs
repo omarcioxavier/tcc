@@ -54,11 +54,19 @@ namespace web.Controllers.Cliente
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult list()
+        public ActionResult listar()
         {
             try
             {
-                var clientes = _context.clientes.OrderBy(c => c.nome).ToList();
+                // Obtém o ID do estabelecimento
+                var estabelecimentoId = int.Parse(Session["EstabelecimentoId"].ToString());
+
+                // Obtém os IDs dos usuários que fizeram pedidos do estabelecimento
+                var clientesIds = _context.pedidos.Where(p => p.estabelecimentoID == estabelecimentoId).Select(p => p.clienteID).ToArray();
+
+                // Obtém os clientes do estabelecimento pelos IDs
+                var clientes = _context.clientes.Where(c => clientesIds.Contains(c.clienteID)).OrderBy(c => c.nome).ToList();
+
                 return View(clientes);
             }
             catch (Exception ex)
@@ -67,24 +75,13 @@ namespace web.Controllers.Cliente
             }
         }
 
-        public ActionResult details(int clienteId)
+        [HttpGet]
+        public ActionResult detalhes(int clienteId)
         {
             try
             {
                 var cliente = _context.clientes.Where(c => c.clienteID == clienteId).SingleOrDefault();
                 return View(cliente);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public ActionResult pedidos(int clienteId)
-        {
-            try
-            {
-                return null;
             }
             catch (Exception ex)
             {

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using web.Controllers.Estabelecimento;
+using web.Models.Estabelecimento;
 using web.Models.Usuario;
 using web.Repository.DBConn;
 
@@ -41,13 +43,15 @@ namespace web.Controllers.Usuario
 
                 if (usuario != null)
                 {
-                    Session["Name"] = usuario.login;
+                    Session["UserId"] = usuario.usuarioID;
+                    Session["UserName"] = usuario.login;
+                    var estabelecimento = new estabelecimentoController().getById(usuario.estabelecimentoID);
+                    Session["EstabelecimentoId"] = estabelecimento.estabelecimentoID;
 
-                    return RedirectToAction("list", "cliente");
+                    return RedirectToAction("listar", "cliente");
                 }
                 else
                 {
-                    TempData["message"] = "erro";
                     return View("Default");
                 }
             }
