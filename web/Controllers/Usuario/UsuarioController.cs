@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Web.Mvc;
 using web.Controllers.Estabelecimento;
-using web.Models.Estabelecimento;
 using web.Models.Usuario;
 using web.Repository.DBConn;
 
@@ -51,7 +50,7 @@ namespace web.Controllers.Usuario
                 }
                 else
                 {
-                    return View("Default");
+                    return View("login");
                 }
             }
             catch (Exception ex)
@@ -64,7 +63,7 @@ namespace web.Controllers.Usuario
         {
             Session.Clear();
             Session.Abandon();
-            return RedirectToAction("Default");
+            return RedirectToAction("login");
         }
 
         public ActionResult NaoEncontrado(usuario usuario)

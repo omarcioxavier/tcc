@@ -17,38 +17,6 @@ namespace web.Controllers.Produto
             _context = new DBConn();
         }
 
-        /// <summary>
-        /// produto/getAll
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public JsonResult getAll()
-        {
-            return Json(_context.produtos, JsonRequestBehavior.AllowGet);
-        }
-
-        /// <summary>
-        /// produto/getById
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet]
-        public JsonResult getById(int id)
-        {
-            return Json(_context.produtos.Where(p => p.produtoID == id).ToList(), JsonRequestBehavior.AllowGet);
-        }
-
-        /// <summary>
-        /// produto/getByCategoriaId
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet]
-        public JsonResult getByCategoriaId(int id)
-        {
-            return Json(_context.produtos.Where(p => p.produtoCategoriaID == id).ToList(), JsonRequestBehavior.AllowGet);
-        }
-
         public ActionResult listar()
         {
             try
@@ -92,13 +60,13 @@ namespace web.Controllers.Produto
         }
 
         [HttpGet]
-        public ActionResult editar(int produtoID)
+        public ActionResult editar(int id)
         {
             try
             {
                 var viewModel = new produtoFormViewModel()
                 {
-                    produto = _context.produtos.Where(p => p.produtoID == produtoID).SingleOrDefault(),
+                    produto = _context.produtos.Where(p => p.produtoID == id).SingleOrDefault(),
                     produtoCategorias = _context.produtosCategorias.ToList()
                 };
                 return View("form", viewModel);

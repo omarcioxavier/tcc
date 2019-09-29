@@ -1,4 +1,4 @@
-﻿@model web.ViewModel.Produto.produtoListarViewModel
+﻿@model IEnumerable<web.Models.Pedido.pedido>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,27 +10,23 @@
             <br />
             <div class="card">
                 <div class="card-header">
-                    <b>Produtos</b>
+                    <b>Pedidos</b>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group row">
-                                <div class="col-6">
-                                    <label>Descrição</label>
-                                    <input class="form-control form-control-sm col-12" type="text">
+                                <div class="col-2">
+                                    <label>Data Início</label>
+                                    <input class="form-control form-control-sm col-12 data" type="text">
                                 </div>
-                                <div class="col-3">
-                                    <label>Categoria</label>
-                                    @Html.DropDownListFor(model => model.produtoCategorias.FirstOrDefault().produtoCategoriaID, new SelectList(Model.produtoCategorias, "produtoCategoriaID", "descricao"), "Categoria", new { @class = "form-control form-control-sm col-12" })
+                                <div class="col-2">
+                                    <label>Data Fim</label>
+                                    <input class="form-control form-control-sm col-12 data" type="text">
                                 </div>
-                            </div>
-                            <div class="row">
+                            </div><div class="row">
                                 <div class="col-1">
                                     <input type="button" value="Pesquisar" class="btn btn-sm btn-success" />
-                                </div>
-                                <div class="col-1">
-                                    @Html.ActionLink("Adicionar", "novo", null, new { @class = "btn btn-sm btn-outline-primary" })
                                 </div>
                             </div>
                         </div>
@@ -43,45 +39,49 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>
-                                            <i class="fa fa-list"></i>
-                                            Descrição
+                                            <i class="fa fa-user-o"></i>
+                                            Cliente
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-calendar"></i>
+                                            Data do Pedido
                                         </th>
                                         <th>
                                             <i class="fa fa-money"></i>
-                                            Preço Unitário
+                                            Valor do Pedido
                                         </th>
                                         <th>
-                                            <i class="fa fa-adjust"></i>
-                                            Status
+                                            <i class="fa fa-truck"></i>
+                                            Delivery
                                         </th>
-                                        <th>
-                                            <i class="fa fa-plus-circle"></i>
-                                            Mais
-                                        </th>
+                                        <th></th>
                                     </tr>
                                 </thead>
 
-                                @foreach (var item in Model.produtos)
+                                @foreach (var item in Model)
                                 {
                                     <tr>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.descricao)
+                                            @Html.DisplayFor(modelItem => item.cliente.nome)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.precoUnitario, new { @class = "money" })
+                                            @Html.DisplayFor(modelItem => item.dataPedido)
                                         </td>
                                         <td>
-                                            @if (item.ativo)
+                                            @Html.DisplayFor(modelItem => item.valorPedido)
+                                        </td>
+                                        <td>
+                                            @if (item.entrega)
                                             {
-                                                <span class="badge badge-success">Ativo</span>
+                                                <span class="badge badge-success">Sim</span>
                                             }
                                             else
                                             {
-                                                <span class="badge badge-danger">Inativo</span>
+                                                <span class="badge badge-danger">Não</span>
                                             }
                                         </td>
                                         <td class="fit-column">
-                                            @Html.ActionLink("Editar", "editar", new { id = item.produtoID }, new { @class = "btn btn-sm btn-outline-primary" })
+                                            @Html.ActionLink("Editar", "detalhes", new { id = item.pedidoID }, new { @class = "btn btn-sm btn-outline-primary" })
                                         </td>
                                     </tr>
                                 }

@@ -344,7 +344,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\cliente\listar.cshtml" />
@@ -359,9 +358,10 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\cliente\detalhes.cshtml" />
-    <Content Include="Views\usuario\Default.cshtml" />
+    <Content Include="Views\usuario\login.cshtml" />
     <Content Include="Views\produto\listar.cshtml" />
     <Content Include="Views\produto\form.cshtml" />
+    <Content Include="Views\pedido\listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
