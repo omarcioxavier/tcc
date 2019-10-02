@@ -19,6 +19,15 @@ namespace web.Models.Usuario
         public int estabelecimentoID { get; set; }
 
         [ForeignKey("estabelecimentoID")]
-        public virtual estabelecimento  estabelecimento { get; set; }
+        public virtual estabelecimento estabelecimento { get; set; }
+
+        [NotMapped]
+        public virtual string titulo
+        {
+            get
+            {
+                return usuarioID > 0 ? "Editar Usuário" : "Novo Usuário";
+            }
+        }
     }
 }

@@ -362,6 +362,8 @@
     <Content Include="Views\produto\listar.cshtml" />
     <Content Include="Views\produto\form.cshtml" />
     <Content Include="Views\pedido\listar.cshtml" />
+    <Content Include="Views\usuario\listar.cshtml" />
+    <Content Include="Views\usuario\form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

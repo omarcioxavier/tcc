@@ -1,0 +1,92 @@
+﻿@model IEnumerable<web.Models.Usuario.usuario>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    <b>Usuários</b>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-6">
+                                    <label>Login</label>
+                                    <input class="form-control form-control-sm col-12" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-1">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
+                                        <label class="custom-control-label" for="customCheck1">Ativo</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-1">
+                                    <input type="button" value="Pesquisar" class="btn btn-sm btn-success" />
+                                </div>
+                                <div class="col-1">
+                                    @Html.ActionLink("Adicionar", "novo", null, new { @class = "btn btn-sm btn-outline-primary" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-sm table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>
+                                            <i class="fa fa-user-o"></i>
+                                            Login
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-adjust"></i>
+                                            Status
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-plus-circle"></i>
+                                            Mais
+                                        </th>
+                                    </tr>
+                                </thead>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.login)
+                                        </td>
+                                        <td>
+                                            @if (item.ativo)
+                                            {
+                                                <span class="badge badge-success">Ativo</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">Inativo</span>
+                                            }
+                                        </td>
+                                        <td class="fit-column">
+                                            @Html.ActionLink("Editar", "editar", new { id = item.usuarioID }, new { @class = "btn btn-sm btn-outline-primary" })
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

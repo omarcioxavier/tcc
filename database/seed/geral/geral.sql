@@ -1,10 +1,5 @@
 USE tcc_db;
 
--- USUÁRIOS --
-INSERT INTO usuario (login, senha, ativo, estabelecimentoID) VALUES
-	('admin@pizzamax','123456', 1, 0, 1),
-	('user@pizzamax','abcdef', 1, 0, 1);
-
 -- CLIENTES --
 INSERT INTO cliente (nome, email, numeroCelular, ativo) VALUES 
 	('Rafaela Sebastiana Teixeira', 'rrafaelasebastianateixeira@parker.com', '(41) 98929-3625', 1),
@@ -38,8 +33,14 @@ INSERT INTO estabelecimentoEndereco (estabelecimentoID, enderecoID) VALUES
 	(1, 3),
 	(2, 4);
 
--- PRODUTOS --
+-- USUÁRIOS --
+INSERT INTO usuario (login, senha, ativo, estabelecimentoID) VALUES
+	('admin@pizzamax','123456', 1, 1),
+	('user@pizzamax','abcdef', 1, 1),
+	('caixa@admin','123456', 1, 2),
+	('atendimento@admin','abcdef', 1, 2);
 
+-- PRODUTOS --
 INSERT INTO produtoCategoria (descricao) VALUES
 	('Lanche'), ('Prato Feito'), ('Bebida'), ('Pizza');
 

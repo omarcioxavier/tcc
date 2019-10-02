@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                @Html.ActionLink("Produtos", "listar", "produto", null, new { @class = "nav-link" })
+                @Html.ActionLink("Pedidos", "listar", "pedido", null, new { @class = "nav-link" })
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Entregas</a>
             </li>
             <li>
                 @Html.ActionLink("Clientes", "listar", "cliente", null, new { @class = "nav-link" })
             </li>
             <li class="nav-item">
-                @Html.ActionLink("Pedidos", "listar", "pedido", null, new { @class = "nav-link" })
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Entregas</a>
+                @Html.ActionLink("Produtos", "listar", "produto", null, new { @class = "nav-link" })
             </li>
             <li>
                 @Html.ActionLink("Usuários", "listar", "usuario", null, new { @class = "nav-link" })
