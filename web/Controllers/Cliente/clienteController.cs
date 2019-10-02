@@ -15,50 +15,23 @@ namespace web.Controllers.Cliente
         }
 
         /// <summary>
-        /// cliente/getAll
+        /// cliente/listar
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public JsonResult getAll()
+        public ActionResult listar()
         {
             try
             {
-                return Json(_context.clientes, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+                // Obtém o ID do estabelecimento
+                var estabelecimentoId = int.Parse(Session["EstabelecimentoId"].ToString());
 
-        /// <summary>
-        /// cliente/getById
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet]
-        public JsonResult getById(int id)
-        {
-            try
-            {
-                return Json(_context.clientes.Where(c => c.clienteID == id), JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
+                // Obtém os IDs dos usuários que fizeram pedidos do estabelecimento
+                var clientesIds = _context.pedidos.Where(p => p.estabelecimentoID == estabelecimentoId).Select(p => p.clienteID).ToArray();
 
-        /// <summary>
-        /// cliente/index
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public ActionResult list()
-        {
-            try
-            {
-                var clientes = _context.clientes.OrderBy(c => c.nome).ToList();
+                // Obtém os clientes do estabelecimento pelos IDs
+                var clientes = _context.clientes.Where(c => clientesIds.Contains(c.clienteID)).OrderBy(c => c.nome).ToList();
+
                 return View(clientes);
             }
             catch (Exception ex)
@@ -67,24 +40,13 @@ namespace web.Controllers.Cliente
             }
         }
 
-        public ActionResult details(int clienteId)
+        [HttpGet]
+        public ActionResult detalhes(int id)
         {
             try
             {
-                var cliente = _context.clientes.Where(c => c.clienteID == clienteId).SingleOrDefault();
+                var cliente = _context.clientes.Where(c => c.clienteID == id).SingleOrDefault();
                 return View(cliente);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public ActionResult pedidos(int clienteId)
-        {
-            try
-            {
-                return null;
             }
             catch (Exception ex)
             {
