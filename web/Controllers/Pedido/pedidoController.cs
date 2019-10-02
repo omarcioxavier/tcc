@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using web.Repository.DBConn;
 
@@ -14,23 +15,32 @@ namespace web.Controllers.Pedido
         }
 
         /// <summary>
-        /// pedido/getAll
+        /// Listar os pedidos
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public JsonResult getAll()
+        public ActionResult listar(int? id)
         {
-            return Json(_context.pedidos, JsonRequestBehavior.AllowGet);
-        }
+            try
+            {
+                // Obtém o ID do estabelecimento
+                var estabelecimentoId = int.Parse(Session["EstabelecimentoId"].ToString());
 
-        /// <summary>
-        /// pedido/getById
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public JsonResult getById(int id)
-        {
-            return Json(_context.pedidos.Where(l => l.pedidoID == id), JsonRequestBehavior.AllowGet);
+                // Obtém os pedidos do estabelecimento
+                var pedidos = _context.pedidos.Where(p => p.estabelecimentoID == estabelecimentoId);
+
+                // Se clienteID != null, filtra por cliente
+                if (id != null)
+                {
+                    pedidos = pedidos.Where(p => p.clienteID == id);
+                }
+
+                return View(pedidos.OrderByDescending(p => p.dataPedido).ToList());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
