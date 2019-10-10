@@ -1,0 +1,44 @@
+﻿@model web.ViewModel.Pedido.pedidoDetalhesViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    <b>Detalhes</b>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5">
+                            <label>Cliente</label>
+                            <input type="text" class="form-control disabled col-12" value="@Html.DisplayFor(model => model.cliente.nome)" />
+                        </div>
+                        <div class="col-3">
+                            <label>Data</label>
+                            <input type="text" class="form-control disabled col-12" value="@Html.DisplayFor(model => model.pedido.dataPedido)" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <label>Total</label>
+                            <input type="text" class="form-control disabled col-12" value="@Html.DisplayFor(model => model.pedido.valorPedido)" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <label>Endereço de Entrega</label>
+                            @Html.TextAreaFor(model => model.endereco, new { @class = "form-control disabled col-12" })
+                        </div>
+                    </div>
+                    <br />
+                    @Html.ActionLink("Voltar", "listar", null, new { @class = "btn btn-sm btn-outline-warning" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
