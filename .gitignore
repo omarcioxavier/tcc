@@ -1,3 +1,4 @@
 ﻿/web/.vs/*
 /web/bin/*
 /web/obj/Debug/*
+/web/Migrations/*

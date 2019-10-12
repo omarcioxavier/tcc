@@ -24,17 +24,52 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-2">
-                            <label>Total</label>
-                            <input type="text" class="form-control disabled col-12" value="@Html.DisplayFor(model => model.pedido.valorPedido)" />
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-12">
                             <label>Endereço de Entrega</label>
                             @Html.TextAreaFor(model => model.endereco, new { @class = "form-control disabled col-12" })
                         </div>
                     </div>
+                    <hr />
+                    <label>Itens do Pedido</label>
+                    <table class="table table-sm table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>
+                                    <i class="fa fa-list"></i>
+                                    Descrição
+                                </th>
+                                <th>
+                                    <i class="fa fa-list-ol"></i>
+                                    Quantidade
+                                </th>
+                                <th>
+                                    <i class="fa fa-money"></i>
+                                    Preço Unitário
+                                </th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model.produtosPedidos)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.produto.descricao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.quantidade)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.produto.precoUnitario, new { @class = "money" })
+                                </td>
+                            </tr>
+                        }
+                        <tfoot>
+                            <tr class="table-light">
+                                <td><b>TOTAL</b></td>
+                                <td><b>@Html.DisplayFor(modelItem => Model.pedido.quantidadeTotal)</b></td>
+                                <td><b>@Html.DisplayFor(modelItem => Model.pedido.valorPedido)</b></td>
+                            </tr>
+                        </tfoot>
+                    </table>
                     <br />
                     @Html.ActionLink("Voltar", "listar", null, new { @class = "btn btn-sm btn-outline-warning" })
                 </div>
