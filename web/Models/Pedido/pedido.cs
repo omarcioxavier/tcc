@@ -15,6 +15,8 @@ namespace web.Models.Pedido
         public DateTime dataPedido { get; set; }
 
         public float valorPedido { get; set; }
+        
+        public int quantidadeTotal { get; set; }
 
         public bool entrega { get; set; }
 

@@ -184,22 +184,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909141505506_First.cs" />
-    <Compile Include="Migrations\201909141505506_First.Designer.cs">
-      <DependentUpon>201909141505506_First.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909211428489_usuaio.cs" />
-    <Compile Include="Migrations\201909211428489_usuaio.Designer.cs">
-      <DependentUpon>201909211428489_usuaio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909211736172_usuario2.cs" />
-    <Compile Include="Migrations\201909211736172_usuario2.Designer.cs">
-      <DependentUpon>201909211736172_usuario2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909272232041_RemoverCategoriaCliente.cs" />
-    <Compile Include="Migrations\201909272232041_RemoverCategoriaCliente.Designer.cs">
-      <DependentUpon>201909272232041_RemoverCategoriaCliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente\cliente.cs" />
     <Compile Include="Models\Cliente\clienteEndereco.cs" />
@@ -385,20 +369,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909141505506_First.resx">
-      <DependentUpon>201909141505506_First.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909211428489_usuaio.resx">
-      <DependentUpon>201909211428489_usuaio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909211736172_usuario2.resx">
-      <DependentUpon>201909211736172_usuario2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909272232041_RemoverCategoriaCliente.resx">
-      <DependentUpon>201909272232041_RemoverCategoriaCliente.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

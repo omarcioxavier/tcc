@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using web.Models.Cliente;
 using web.Models.Pedido;
-using web.Models.Produto;
 
 namespace web.ViewModel.Pedido
 {
@@ -11,7 +10,7 @@ namespace web.ViewModel.Pedido
 
         public cliente cliente { get; set; }
 
-        public IEnumerable<produto> produtos { get; set; }
+        public IEnumerable<produtoPedido> produtosPedidos { get; set; }
 
         public string endereco { get; set; }
     }
