@@ -11,10 +11,12 @@ namespace web.Models.Pedido
         [Key]
         public int produtoPedidoID { get; set; }
 
+        public int quantidade { get; set; }
+
         public int produtoID { get; set; }
         
         public int pedidoID { get; set; }
-
+        
         [ForeignKey("produtoID")]
         public virtual produto produto { get; set; }
 

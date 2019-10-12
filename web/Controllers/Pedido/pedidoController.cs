@@ -74,11 +74,19 @@ namespace web.Controllers.Pedido
                     enderecoCompleto = string.Concat(endereco.logradouro, ", ", endereco.numero, ", ", endereco.bairro, ", ", cidade.nome, "-", estado.uf);
                 }
 
+                // Obtém os produtos do pedido
+                var produtosPedido = _context.produtosPedidos.Where(pp => pp.pedidoID == pedido.pedidoID).ToList();
+                foreach(var produtoPedido in produtosPedido)
+                {
+                    produtoPedido.produto = _context.produtos.Where(p=>p.produtoID == produtoPedido.produtoID).SingleOrDefault();
+                }
+
                 var viewModel = new pedidoDetalhesViewModel()
                 {
                     pedido = pedido,
                     cliente = pedido.cliente,
-                    endereco = enderecoCompleto
+                    endereco = enderecoCompleto,
+                    produtosPedidos = produtosPedido
                 };
 
                 return View(viewModel);
