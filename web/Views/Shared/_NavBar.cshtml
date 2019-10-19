@@ -9,9 +9,6 @@
             <li class="nav-item">
                 @Html.ActionLink("Pedidos", "listar", "pedido", null, new { @class = "nav-link" })
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Entregas</a>
-            </li>
             <li>
                 @Html.ActionLink("Clientes", "listar", "cliente", null, new { @class = "nav-link" })
             </li>
@@ -20,6 +17,12 @@
             </li>
             <li>
                 @Html.ActionLink("Usuários", "listar", "usuario", null, new { @class = "nav-link" })
+            </li>
+            <li>
+                @Html.ActionLink("Estabelecimento", "editar", "estabelecimento", null, new { @class = "nav-link" })
+            </li>
+            <li>
+                @Html.ActionLink("Endereço", "editar", "endereco", null, new { @class = "nav-link" })
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

@@ -54,8 +54,6 @@ namespace web.Repository.DBConn
 
         public DbSet<entrega> entregas { get; set; }
 
-        public DbSet<entregaEndereco> entregasEnderecos { get; set; }
-
         public DbSet<log> logs { get; set; }
 
         public DbSet<modulo> modulos { get; set; }

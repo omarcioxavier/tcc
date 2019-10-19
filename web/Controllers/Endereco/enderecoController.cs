@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
+using web.Models.Endereco;
 using web.Repository.DBConn;
 
 namespace web.Controllers.Endereco
@@ -32,6 +34,30 @@ namespace web.Controllers.Endereco
         public JsonResult getById(int id)
         {
             return Json(_context.enderecos.Where(e => e.enderecoID == id), JsonRequestBehavior.AllowGet);
+        }
+
+        public void salvar(endereco endereco)
+        {
+            if (endereco.enderecoID > 0)
+            {
+                atualizar(endereco);
+            }
+            else
+            {
+                inserir(endereco);
+            }
+        }
+
+        [HttpPost]
+        private void inserir(endereco endereco)
+        {
+
+        }
+
+        [HttpPut]
+        private void atualizar(endereco endereco)
+        {
+
         }
     }
 }
