@@ -208,6 +208,7 @@
     <Compile Include="Models\Log\log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DBConn\DBConn.cs" />
+    <Compile Include="ViewModel\Estabelecimento\estabelecimentoEditarViewModel.cs" />
     <Compile Include="ViewModel\Estabelecimento\estabelecimentoNovoViewModel.cs" />
     <Compile Include="ViewModel\Pedido\pedidoDetalhesViewModel.cs" />
     <Compile Include="ViewModel\Produto\produtoFormViewModel.cs" />
