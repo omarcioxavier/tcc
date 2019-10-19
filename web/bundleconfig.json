@@ -76,5 +76,11 @@
     "inputFiles": [
       "Content/sweetalert/sweet-alert.css"
     ]
+  },
+  {
+    "outputFileName": "Scripts/inputmask/inputmask.min.js",
+    "inputFiles": [
+      "Scripts/inputmask/inputmask.js"
+    ]
   }
 ]

@@ -8,7 +8,7 @@ $(document).ready(function () {
     } catch (err) { }
     try {
         SetMask();
-    } catch (err) { }
+    } catch (err) { console.log(err); }
 });
 
 var SetTextEditors = () => {
@@ -48,5 +48,6 @@ var SetMask = () => {
     $(".data").inputmask("mask", { "mask": "99/99/9999" });
     $(".telefone").inputmask("mask", { "mask": "(99) 9999 9999" });
     $(".celular").inputmask("mask", { "mask": "(99) 9 9999 9999" });
-    $(".float").mask('#.##0,00', { reverse: true });
+    $(".float").inputmask('#.##0,00', { reverse: true });
+    $(".number").inputmask({ "mask": "9", "repeat": 15 });
 }

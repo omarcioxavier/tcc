@@ -18,9 +18,11 @@ namespace web.Controllers.Usuario
 
         public ActionResult Default()
         {
-            if (Session.IsNewSession)
+            var login = Session["UserName"];
+
+            if (Session.IsNewSession || login == null)
             {
-                return View();
+                return Redirect("~/");
             }
             else
             {
@@ -43,7 +45,7 @@ namespace web.Controllers.Usuario
                 {
                     Session["UserId"] = usuario.usuarioID;
                     Session["UserName"] = usuario.login;
-                    Session["EstabelecimentoId"] = new estabelecimentoController().getById(usuario.estabelecimentoID).estabelecimentoID;
+                    Session["EstabelecimentoId"] = usuario.estabelecimentoID;
 
                     return RedirectToAction("listar", "pedido");
                 }
@@ -118,7 +120,7 @@ namespace web.Controllers.Usuario
             try
             {
                 var usuario = _context.usuarios.Where(u => u.usuarioID == id).SingleOrDefault();
-                
+
                 // Obtém o ID do estabelecimento
                 var estabelecimentoId = int.Parse(Session["EstabelecimentoId"].ToString());
 

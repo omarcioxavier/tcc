@@ -29,6 +29,11 @@
                             @Html.TextAreaFor(model => model.endereco, new { @class = "form-control disabled col-12" })
                         </div>
                     </div>
+                    <br />
+                    @if (Model.pedido.entrega)
+                    {
+                        @Html.ActionLink("Detalhes da entrega", "listar", "entrega", new { id = Model.pedido.pedidoID }, new { @class = "btn btn-sm btn-success" })
+                    }
                     <hr />
                     <label>Itens do Pedido</label>
                     <table class="table table-sm table-hover">

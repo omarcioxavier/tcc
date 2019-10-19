@@ -167,7 +167,6 @@
     <Compile Include="Controllers\Endereco\enderecoController.cs" />
     <Compile Include="Controllers\Endereco\estadoController.cs" />
     <Compile Include="Controllers\Entrega\entregaController.cs" />
-    <Compile Include="Controllers\Entrega\entregaEnderecoController.cs" />
     <Compile Include="Controllers\Erro\erroController.cs" />
     <Compile Include="Controllers\Estabelecimento\estabelecimentoCategoriaController.cs" />
     <Compile Include="Controllers\Estabelecimento\estabelecimentoController.cs" />
@@ -184,11 +183,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910131425227_RemoveTable.cs" />
+    <Compile Include="Migrations\201910131425227_RemoveTable.Designer.cs">
+      <DependentUpon>201910131425227_RemoveTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente\cliente.cs" />
     <Compile Include="Models\Cliente\clienteEndereco.cs" />
     <Compile Include="Models\Entrega\entrega.cs" />
-    <Compile Include="Models\Entrega\entregaEndereco.cs" />
     <Compile Include="Models\Usuario\usuario.cs" />
     <Compile Include="Models\Utils\Modulo\modulo.cs" />
     <Compile Include="Models\Pedido\pedido.cs" />
@@ -206,6 +208,7 @@
     <Compile Include="Models\Log\log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DBConn\DBConn.cs" />
+    <Compile Include="ViewModel\Estabelecimento\estabelecimentoNovoViewModel.cs" />
     <Compile Include="ViewModel\Pedido\pedidoDetalhesViewModel.cs" />
     <Compile Include="ViewModel\Produto\produtoFormViewModel.cs" />
     <Compile Include="ViewModel\Produto\produtoListarViewModel.cs" />
@@ -213,7 +216,7 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Assets\Geral\geral.js" />
-    <Content Include="Assets\Login\css\login.css" />
+    <Content Include="Assets\Default\css\default.css" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\animate.min.css">
       <DependentUpon>animate.css</DependentUpon>
@@ -289,6 +292,9 @@
     <Content Include="Scripts\inputmask\inputmask.date.extensions.js" />
     <Content Include="Scripts\inputmask\inputmask.extensions.js" />
     <Content Include="Scripts\inputmask\inputmask.js" />
+    <Content Include="Scripts\inputmask\inputmask.min.js">
+      <DependentUpon>inputmask.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\inputmask\inputmask.numeric.extensions.js" />
     <Content Include="Scripts\inputmask\jquery.inputmask.js" />
     <Content Include="Scripts\inputmask\min\bindings\inputmask.binding.min.js" />
@@ -350,10 +356,12 @@
     <Content Include="Views\usuario\listar.cshtml" />
     <Content Include="Views\usuario\form.cshtml" />
     <Content Include="Views\pedido\detalhes.cshtml" />
+    <Content Include="Views\estabelecimento\novo.cshtml" />
+    <Content Include="Views\estabelecimento\editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\Login\js\" />
+    <Folder Include="Assets\Default\js\" />
     <Folder Include="Services\" />
     <Folder Include="Utils\" />
     <Folder Include="ViewModel\Cliente\" />
@@ -369,6 +377,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201910131425227_RemoveTable.resx">
+      <DependentUpon>201910131425227_RemoveTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
