@@ -1,0 +1,87 @@
+﻿@model web.ViewModel.Estabelecimento.estabelecimentoNovoViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Cadastre-se</title>
+    <link href="~/Assets/Default/css/default.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row justify-content-xl-center cadastro-default">
+        <div class="col-8">
+            <br />
+            <div class="card card-default">
+                <div class="card-header">
+                    Cadastro de Estabelecimento
+                </div>
+                @using (Html.BeginForm("salvar", "estabelecimento", new { id = "form" }))
+                {
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Razão Social</label>
+                                @Html.EditorFor(model => model.estabelecimento.razaoSocial, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Nome Fantasia</label>
+                                @Html.EditorFor(model => model.estabelecimento.nomeFantasia, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label>CNPJ</label>
+                                @Html.EditorFor(model => model.estabelecimento.cnpj, new { htmlAttributes = new { @class = "form-control form-control-sm col-12 cnpj" } })
+                            </div>
+                            <div class="col-md-2">
+                                <label>Inscrição Estadual</label>
+                                @Html.EditorFor(model => model.estabelecimento.inscricaoEstadual, new { htmlAttributes = new { @class = "form-control form-control-sm col-12 number" } })
+                            </div>
+                            <div class="col-3">
+                                <label>Categoria</label>
+                                @Html.DropDownListFor(model => model.estabelecimento.estabelecimentoCategoriaID, new SelectList(Model.estabelecimentoCategorias, "estabelecimentoCategoriaID", "descricao"), null, new { @class = "form-control-sm form-control col-12" })
+                            </div>
+                            <div class="col-1">
+                                <label>Status</label><br />
+                                @Html.CheckBoxFor(model => model.estabelecimento.ativo, htmlAttributes: new { @id = "SwitchStatus", @onclick = "SetStatusLabel()" })
+                                <label id="lblStatus"></label>
+                            </div>
+                        </div>
+                        <hr />
+                        <label>Dados do Usuário</label>
+                        <div class="row">
+                            <div class="col-3">
+                                <label>Login</label>
+                                @Html.EditorFor(model => model.usuario.login, new { htmlAttributes = new { @class = "form-control form-control-sm col-12", autocomplete = "off" } })
+                            </div>
+                            <div class="col-md-3">
+                                <label>Senha</label>
+                                @Html.EditorFor(model => model.usuario.senha, new { htmlAttributes = new { @class = "form-control form-control-sm col-12", @type = "password", autocomplete = "off" } })
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                        <hr />
+
+                        @Html.ActionLink("Voltar", "login", "usuario", null, new { @class = "btn btn-sm btn-outline-warning" })
+
+                        <div class="card-body"></div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/inputmask/jquery.inputmask.js"></script>
+    <script src="~/Assets/Geral/geral.js"></script>
+</body>
+</html>

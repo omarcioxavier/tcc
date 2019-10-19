@@ -8,7 +8,7 @@ namespace web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/inputmask/inputmask.js",
+                        "~/Scripts/inputmask/inputmask.min.js",
                         "~/Scripts/inputmask/jquery.inputmask.js",
                         "~/Scripts/inputmask/inputmask.extensions.js",
                         "~/Scripts/inputmask/inputmask.date.extensions.js",
