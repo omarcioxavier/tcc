@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using web.Models.Endereco;
+using web.Models.Estabelecimento;
 using web.Repository.DBConn;
 using web.ViewModel.Endereco;
 
@@ -37,32 +38,12 @@ namespace web.Controllers.Endereco
             return Json(_context.enderecos.Where(e => e.enderecoID == id), JsonRequestBehavior.AllowGet);
         }
 
-        public void salvar(endereco endereco)
-        {
-            try
-            {
-                if (endereco.enderecoID > 0)
-                {
-                    atualizar(endereco);
-                }
-                else
-                {
-                    inserir(endereco);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
         public ActionResult editar()
         {
             try
             {
                 var estabelecimentoID = int.Parse(Session["EstabelecimentoID"].ToString());
                 var estabelecimentoEndereco = _context.estabelecimentosEnderecos.Where(ee => ee.estabelecimentoID == estabelecimentoID).FirstOrDefault();
-
 
                 var viewModel = new enderecoEditarViewModel();
                 endereco endereco = new endereco();
@@ -91,16 +72,55 @@ namespace web.Controllers.Endereco
             }
         }
 
+        public void salvar(endereco endereco)
+        {
+            try
+            {
+                if (endereco.enderecoID > 0)
+                {
+                    atualizar(endereco);
+                }
+                else
+                {
+                    inserir(endereco);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         [HttpPost]
         private void inserir(endereco endereco)
         {
+            // Insere na tabela endereço
+            _context.enderecos.Add(endereco);
+            _context.SaveChanges();
 
+            // Insere na tabela enderecoEstabelecimento
+            var estabelecimentoEndereco = new estabelecimentoEndereco()
+            {
+                estabelecimentoID = int.Parse(Session["EstabelecimentoID"].ToString()),
+                enderecoID = endereco.enderecoID
+            };
+            _context.estabelecimentosEnderecos.Add(estabelecimentoEndereco);
+            _context.SaveChanges();
         }
 
         [HttpPut]
         private void atualizar(endereco endereco)
         {
+            var enderecoAtual = _context.enderecos.Where(e => e.enderecoID == endereco.enderecoID).SingleOrDefault();
+            enderecoAtual.logradouro = endereco.logradouro;
+            enderecoAtual.numero = endereco.numero;
+            enderecoAtual.complemento = endereco.complemento;
+            enderecoAtual.bairro = endereco.bairro;
+            enderecoAtual.cep = endereco.cep;
+            enderecoAtual.cidadeID = endereco.cidadeID;
+            enderecoAtual.estadoID = endereco.estadoID;
 
+            _context.SaveChanges();
         }
     }
 }

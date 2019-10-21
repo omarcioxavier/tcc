@@ -35,12 +35,12 @@
                                 @Html.EditorFor(model => model.endereco.bairro, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
                             </div>
                             <div class="col-3">
-                                <label>Cidade</label>
-                                @Html.DropDownListFor(model => model.endereco.cidadeID, new SelectList(Model.cidades, "cidadeID", "nome"), null, new { @class = "form-control-sm form-control col-12" })
+                                <label>Estado</label><br />
+                                @Html.DropDownListFor(model => model.endereco.estadoID, new SelectList(Model.estados, "estadoID", "nome"), null, new { @class = "form-control-sm form-control col-12", @id = "ddlEstados" })
                             </div>
                             <div class="col-3">
-                                <label>Estado</label><br />
-                                @Html.DropDownListFor(model => model.endereco.estadoID, new SelectList(Model.estados, "estadoID", "nome"), null, new { @class = "form-control-sm form-control col-12" })
+                                <label>Cidade</label>
+                                @Html.DropDownListFor(model => model.endereco.cidadeID, new SelectList(Model.cidades, "cidadeID", "nome"), null, new { @class = "form-control-sm form-control col-12", @id = "ddlCidades" })
                             </div>
                         </div>
                         <br />
@@ -54,3 +54,4 @@
         </div>
     </div>
 </div>
+<script src="~/Assets/Estabelecimento/js/estabelecimento.js"></script>
