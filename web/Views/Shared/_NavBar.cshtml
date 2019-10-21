@@ -15,14 +15,15 @@
             <li class="nav-item">
                 @Html.ActionLink("Produtos", "listar", "produto", null, new { @class = "nav-link" })
             </li>
-            <li>
-                @Html.ActionLink("Usuários", "listar", "usuario", null, new { @class = "nav-link" })
-            </li>
-            <li>
-                @Html.ActionLink("Estabelecimento", "editar", "estabelecimento", null, new { @class = "nav-link" })
-            </li>
-            <li>
-                @Html.ActionLink("Endereço", "editar", "endereco", null, new { @class = "nav-link" })
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Meus Dados
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @Html.ActionLink("Estabelecimento", "editar", "estabelecimento", null, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Endereço", "editar", "endereco", null, new { @class = "dropdown-item" })
+                    @Html.ActionLink("Usuários", "listar", "usuario", null, new { @class = "dropdown-item" })
+                </div>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

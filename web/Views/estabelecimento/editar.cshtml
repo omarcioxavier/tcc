@@ -1,73 +1,58 @@
-﻿@model web.Models.Estabelecimento.estabelecimento
+﻿@model web.ViewModel.Estabelecimento.estabelecimentoEditarViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>estabelecimento</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.estabelecimentoID)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.razaoSocial, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.razaoSocial, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.razaoSocial, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.nomeFantasia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nomeFantasia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nomeFantasia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.cnpj, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.cnpj, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.cnpj, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.inscricaoEstadual, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.inscricaoEstadual, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.inscricaoEstadual, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ativo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.ativo)
-                    @Html.ValidationMessageFor(model => model.ativo, "", new { @class = "text-danger" })
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    <b>Editar Estabelecimento</b>
                 </div>
-            </div>
-        </div>
+                @using (Html.BeginForm("salvar", "estabelecimento", new { id = "form" }))
+                {
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Razão Social</label>
+                                @Html.EditorFor(model => model.estabelecimento.razaoSocial, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.estabelecimentoCategoriaID, "estabelecimentoCategoriaID", htmlAttributes: new { @class = "control-label col-md-2" })
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                            <div class="col-md-6">
+                                <label>Nome Fantasia</label>
+                                @Html.EditorFor(model => model.estabelecimento.nomeFantasia, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label>CNPJ</label>
+                                @Html.EditorFor(model => model.estabelecimento.cnpj, new { htmlAttributes = new { @class = "form-control form-control-sm col-12 cnpj" } })
+                            </div>
+                            <div class="col-md-2">
+                                <label>Inscrição Estadual</label>
+                                @Html.EditorFor(model => model.estabelecimento.inscricaoEstadual, new { htmlAttributes = new { @class = "form-control form-control-sm col-12 number" } })
+                            </div>
+                            <div class="col-3">
+                                <label>Categoria</label>
+                                @Html.DropDownListFor(model => model.estabelecimento.estabelecimentoCategoriaID, new SelectList(Model.estabelecimentoCategorias, "estabelecimentoCategoriaID", "descricao"), null, new { @class = "form-control-sm form-control col-12" })
+                            </div>
+                            <div class="col-1">
+                                <label>Status</label><br />
+                                @Html.CheckBoxFor(model => model.estabelecimento.ativo, htmlAttributes: new { @id = "SwitchStatus", @onclick = "SetStatusLabel()" })
+                                <label id="lblStatus"></label>
+                            </div>
+                        </div>
+                        <br />
+                        <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                        <hr />
+                        @Html.ActionLink("Voltar", null, null, new { @class = "btn btn-sm btn-outline-warning", @onclick = "window.history.go(-1); return false;" })
+                    </div>
+                    @Html.HiddenFor(model => model.estabelecimento.estabelecimentoID)
+                }
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>

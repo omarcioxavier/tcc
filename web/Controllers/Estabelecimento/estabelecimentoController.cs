@@ -43,7 +43,7 @@ namespace web.Controllers.Estabelecimento
             {
                 var viewModel = new estabelecimentoNovoViewModel()
                 {
-                    estabelecimentoCategorias = _context.estabelecimentosCategorias.ToList()
+                    estabelecimentoCategorias = _context.estabelecimentosCategorias.OrderBy(ec => ec.descricao).ToList()
                 };
                 return View(viewModel);
             }
@@ -58,8 +58,14 @@ namespace web.Controllers.Estabelecimento
             try
             {
                 var estabelecimentoID = int.Parse(Session["EstabelecimentoId"].ToString());
-                var estabelecimento = _context.estabelecimentos.Where(e => e.estabelecimentoID == estabelecimentoID).SingleOrDefault();
-                return View(estabelecimento);
+
+                var viewModel = new estabelecimentoEditarViewModel
+                {
+                    estabelecimento = _context.estabelecimentos.Where(e => e.estabelecimentoID == estabelecimentoID).SingleOrDefault(),
+                    estabelecimentoCategorias = _context.estabelecimentosCategorias.OrderBy(ec => ec.descricao).ToList()
+                };
+
+                return View(viewModel);
             }
             catch (Exception ex)
             {
@@ -75,7 +81,7 @@ namespace web.Controllers.Estabelecimento
                 {
                     // Editar
                     atualizar(estabelecimento);
-                    return RedirectToAction("listar");
+                    return RedirectToAction("listar", "produto");
                 }
                 else
                 {
