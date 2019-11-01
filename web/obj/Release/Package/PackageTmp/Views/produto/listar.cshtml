@@ -1,0 +1,95 @@
+﻿@model web.ViewModel.Produto.produtoListarViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    <b>Produtos</b>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-6">
+                                    <label>Descrição</label>
+                                    <input class="form-control form-control-sm col-12" type="text">
+                                </div>
+                                <div class="col-3">
+                                    <label>Categoria</label>
+                                    @Html.DropDownListFor(model => model.produtoCategorias.FirstOrDefault().produtoCategoriaID, new SelectList(Model.produtoCategorias, "produtoCategoriaID", "descricao"), "Categoria", new { @class = "form-control form-control-sm col-12" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-1">
+                                    <input type="button" value="Pesquisar" class="btn btn-sm btn-success" />
+                                </div>
+                                <div class="col-1">
+                                    @Html.ActionLink("Adicionar", "novo", null, new { @class = "btn btn-sm btn-outline-primary" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-sm table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>
+                                            <i class="fa fa-list"></i>
+                                            Descrição
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-money"></i>
+                                            Preço Unitário
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-adjust"></i>
+                                            Status
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-plus-circle"></i>
+                                            Mais
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                @foreach (var item in Model.produtos)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.descricao)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.precoUnitario, new { @class = "money" })
+                                        </td>
+                                        <td>
+                                            @if (item.ativo)
+                                            {
+                                                <span class="badge badge-success">Ativo</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">Inativo</span>
+                                            }
+                                        </td>
+                                        <td class="fit-column">
+                                            @Html.ActionLink("Editar", "editar", new { id = item.produtoID }, new { @class = "btn btn-sm btn-outline-primary" })
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

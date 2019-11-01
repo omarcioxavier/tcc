@@ -1,0 +1,38 @@
+﻿@model web.Models.Usuario.usuario
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Assets/Default/css/default.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    @using (Html.BeginForm("login", "usuario", new { id = "loginForm" }))
+    {
+        <div class="animated fadeIn">
+            <div class="login-page">
+                <div class="form">
+                    <div class="text-center">
+                        <h3>LOGIN</h3>
+                    </div>
+                    <div class="login-form">
+                        @Html.EditorFor(model => model.login, new { htmlAttributes = new { @id = "txtLogin", placeholder = "Email", autocomplete = "off" } })
+                        @Html.EditorFor(model => model.senha, new { htmlAttributes = new { @id = "txtSenha", placeholder = "Senha", @type = "password" } })
+                        <button type="submit">Entrar</button>
+                        <small class="text-center">
+                            @Html.ActionLink("Cadastrar-se", "novo", "estabelecimento", null, new { @class = "text-muted" })
+                        </small>
+                        <p class="message">Sistema Web</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>

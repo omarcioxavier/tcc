@@ -1,0 +1,95 @@
+﻿@model IEnumerable<web.Models.Pedido.pedido>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    <b>Pedidos</b>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <div class="col-2">
+                                    <label>Data Início</label>
+                                    <input class="form-control form-control-sm col-12 data" type="text">
+                                </div>
+                                <div class="col-2">
+                                    <label>Data Fim</label>
+                                    <input class="form-control form-control-sm col-12 data" type="text">
+                                </div>
+                            </div><div class="row">
+                                <div class="col-1">
+                                    <input type="button" value="Pesquisar" class="btn btn-sm btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-sm table-hover">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>
+                                            <i class="fa fa-user-o"></i>
+                                            Cliente
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-calendar"></i>
+                                            Data do Pedido
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-money"></i>
+                                            Valor do Pedido
+                                        </th>
+                                        <th>
+                                            <i class="fa fa-truck"></i>
+                                            Entrega
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.cliente.nome)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dataPedido)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.valorPedido)
+                                        </td>
+                                        <td>
+                                            @if (item.entrega)
+                                            {
+                                                <span class="badge badge-success">Sim</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">Não</span>
+                                            }
+                                        </td>
+                                        <td class="fit-column">
+                                            @Html.ActionLink("Detalhes", "detalhes", new { id = item.pedidoID }, new { @class = "btn btn-sm btn-outline-primary" })
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
