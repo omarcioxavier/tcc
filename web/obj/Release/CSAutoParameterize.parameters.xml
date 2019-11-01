@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="EFConnSring-Web.config Connection String" description="EFConnSring Connection String used in web.config by the application to access the database." defaultValue="Data Source=tcp:webtccdbserver.database.windows.net,1433;Initial Catalog=webtcc_db;User ID=juniorhbr@webtccdbserver;Password=Jr290698@" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Projetos\\Asp\.net\\Trabalho\ Final\\tcc\\web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='EFConnSring']/@connectionString" />
+  </parameter>
+  <parameter name="webtcc_db-Web.config Connection String" description="webtcc_db Connection String used in web.config by the application to access the database." defaultValue="webtcc_db_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Projetos\\Asp\.net\\Trabalho\ Final\\tcc\\web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='webtcc_db']/@connectionString" />
+  </parameter>
+</parameters>
