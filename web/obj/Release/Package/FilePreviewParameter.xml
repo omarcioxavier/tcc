@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="webtcc" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Projetos\\Asp\.net\\Trabalho\ Final\\tcc\\web\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Projetos\\Asp\.net\\Trabalho\ Final\\tcc\\web\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="tcc_db-Web.config Connection String" description="" value="tcc_db_ConnectionString" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Projetos\\Asp\.net\\Trabalho\ Final\\tcc\\web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='tcc_db']/@connectionString" />
+  </parameter>
+  <parameter name="EFConnSring-Web.config Connection String" description="EFConnSring Connection String used in web.config by the application to access the database." value="Data Source=Marcio-PC;Language=Brazilian;Initial Catalog=tcc;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Projetos\\Asp\.net\\Trabalho\ Final\\tcc\\web\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='EFConnSring']/@connectionString" />
+  </parameter>
+</parameters>

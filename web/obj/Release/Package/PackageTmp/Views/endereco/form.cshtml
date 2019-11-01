@@ -1,0 +1,57 @@
+﻿@model web.ViewModel.Endereco.enderecoEditarViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-12">
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    <b>Editar Endereço</b>
+                </div>
+                @using (Html.BeginForm("salvar", "endereco", new { id = "form" }))
+                {
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Logradouro</label>
+                                @Html.EditorFor(model => model.endereco.logradouro, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                            </div>
+
+                            <div class="col-md-2">
+                                <label>Numero</label>
+                                @Html.EditorFor(model => model.endereco.numero, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Complemento</label>
+                                @Html.EditorFor(model => model.endereco.complemento, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                            </div>
+                            <div class="col-md-3">
+                                <label>Bairro</label>
+                                @Html.EditorFor(model => model.endereco.bairro, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                            </div>
+                            <div class="col-3">
+                                <label>Estado</label><br />
+                                @Html.DropDownListFor(model => model.endereco.estadoID, new SelectList(Model.estados, "estadoID", "nome"), null, new { @class = "form-control-sm form-control col-12", @id = "ddlEstados" })
+                            </div>
+                            <div class="col-3">
+                                <label>Cidade</label>
+                                @Html.DropDownListFor(model => model.endereco.cidadeID, new SelectList(Model.cidades, "cidadeID", "nome"), null, new { @class = "form-control-sm form-control col-12", @id = "ddlCidades" })
+                            </div>
+                        </div>
+                        <br />
+                        <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                        <hr />
+                        @Html.ActionLink("Voltar", null, null, new { @class = "btn btn-sm btn-outline-warning", @onclick = "window.history.go(-1); return false;" })
+                    </div>
+                    @Html.HiddenFor(model => model.endereco.enderecoID)
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Assets/Estabelecimento/js/estabelecimento.js"></script>

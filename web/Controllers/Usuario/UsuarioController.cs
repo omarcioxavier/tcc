@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using web.Controllers.Estabelecimento;
 using web.Models.Usuario;
 using web.Repository.DBConn;
 
@@ -39,7 +38,10 @@ namespace web.Controllers.Usuario
         {
             try
             {
-                var usuario = _context.usuarios.Where(u => u.login == obj.login && u.senha == obj.senha).SingleOrDefault();
+                usuario usuario = new usuario();
+                
+                if(obj != null)
+                    usuario = _context.usuarios.Where(u => u.login == obj.login && u.senha == obj.senha).SingleOrDefault();
 
                 if (usuario != null && usuario.ativo)
                 {
