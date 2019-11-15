@@ -31,3 +31,15 @@ function loadGMaps() {
     var marker = new google.maps.Marker({ position: mapProp.center });
     marker.setMap(map);
 }
+
+// Valida o endereço com o google maps
+function VerificarEndereco() {
+    var endereco = "";
+
+    var urlGMapsApi = "https://maps.googleapis.com/maps/api/geocode/json?address=" + endereco + "&key=AIzaSyDoOBBqHuu3tiGZ4v46MGMN4c5J10xbntk";
+
+    $.get(urlGMapsApi, function (data, status) {
+        console.log(status);
+        console.log(data);
+    });
+}
