@@ -183,6 +183,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente\cliente.cs" />
     <Compile Include="Models\Cliente\clienteEndereco.cs" />
     <Compile Include="Models\Entrega\entrega.cs" />
@@ -212,6 +213,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Assets\Estabelecimento\js\pedido.js" />
     <Content Include="Assets\Estabelecimento\js\estabelecimento.js" />
     <Content Include="Assets\Geral\geral.js" />
     <Content Include="Assets\Default\css\default.css" />

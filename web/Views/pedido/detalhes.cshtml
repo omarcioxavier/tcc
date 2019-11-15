@@ -23,17 +23,22 @@
                             <input type="text" class="form-control disabled col-12" value="@Html.DisplayFor(model => model.pedido.dataPedido)" />
                         </div>
                     </div>
+                    <hr />
                     <div class="row">
                         <div class="col-12">
                             <label>Endereço de Entrega</label>
-                            @Html.TextAreaFor(model => model.endereco, new { @class = "form-control disabled col-12" })
+                            @Html.TextAreaFor(model => model.enderecoCompleto, new { @class = "form-control disabled col-12", @id="txtEndereco" })
+                            <br />
                         </div>
                     </div>
                     <br />
-                    @if (Model.pedido.entrega)
-                    {
-                        @Html.ActionLink("Detalhes da entrega", "listar", "entrega", new { id = Model.pedido.pedidoID }, new { @class = "btn btn-sm btn-success" })
-                    }
+                    <div class="row">
+                        <div class="col">
+                            <div id="googleMap" style="width:50%;height:250px;"></div>
+                            @Html.HiddenFor(model => model.endereco.latitude, new { @id = "hddLatitude" })
+                            @Html.HiddenFor(model => model.endereco.longitude, new { @id = "hddLongitude" })
+                        </div>
+                    </div>
                     <hr />
                     <label>Itens do Pedido</label>
                     <table class="table table-sm table-hover">
@@ -82,3 +87,5 @@
         </div>
     </div>
 </div>
+<script src="~/Assets/Estabelecimento/js/pedido.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoOBBqHuu3tiGZ4v46MGMN4c5J10xbntk&callback=loadGMaps"></script>

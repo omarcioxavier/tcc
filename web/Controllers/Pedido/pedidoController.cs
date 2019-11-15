@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using web.Repository.DBConn;
 using web.ViewModel.Pedido;
+using web.Models.Endereco;
 
 namespace web.Controllers.Pedido
 {
@@ -60,14 +61,14 @@ namespace web.Controllers.Pedido
                 // Obtém o cliente do pedido
                 pedido.cliente = _context.clientes.Where(c => c.clienteID == pedido.clienteID).SingleOrDefault();
 
-
                 // Obtém o endereço do cliente
-                string enderecoCompleto = "-";
+                string enderecoCompleto = "";
+                endereco endereco = new endereco();
 
                 if (pedido.entrega)
                 {
                     var clienteEndereco = _context.clientesEnderecos.Where(ce => ce.clienteID == pedido.clienteID).SingleOrDefault();
-                    var endereco = _context.enderecos.Where(e => e.enderecoID == clienteEndereco.enderecoID).SingleOrDefault();
+                    endereco = _context.enderecos.Where(e => e.enderecoID == clienteEndereco.enderecoID).SingleOrDefault();
                     var cidade = _context.cidades.Where(c => c.cidadeID == endereco.cidadeID).SingleOrDefault();
                     var estado = _context.estados.Where(e => e.estadoID == cidade.estadoID).SingleOrDefault();
 
@@ -85,8 +86,9 @@ namespace web.Controllers.Pedido
                 {
                     pedido = pedido,
                     cliente = pedido.cliente,
-                    endereco = enderecoCompleto,
-                    produtosPedidos = produtosPedido
+                    endereco = endereco,
+                    produtosPedidos = produtosPedido,
+                    enderecoCompleto = enderecoCompleto
                 };
 
                 return View(viewModel);

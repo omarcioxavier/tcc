@@ -21,7 +21,7 @@
                             </div>
 
                             <div class="col-md-2">
-                                <label>Numero</label>
+                                <label>Número</label>
                                 @Html.EditorFor(model => model.endereco.numero, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
                             </div>
                         </div>
@@ -43,15 +43,25 @@
                                 @Html.DropDownListFor(model => model.endereco.cidadeID, new SelectList(Model.cidades, "cidadeID", "nome"), null, new { @class = "form-control-sm form-control col-12", @id = "ddlCidades" })
                             </div>
                         </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col">
+                                <div id="googleMap" style="width:50%;height:250px;"></div>
+                            </div>
+                        </div>
                         <br />
-                        <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                        <button type="button" class="btn btn-sm btn-secondary" onclick="ValidarEndereco();">Validar Endereço</button>
+                        <button type="submit" class="btn btn-sm btn-success" disabled>Salvar</button>
                         <hr />
                         @Html.ActionLink("Voltar", null, null, new { @class = "btn btn-sm btn-outline-warning", @onclick = "window.history.go(-1); return false;" })
                     </div>
                     @Html.HiddenFor(model => model.endereco.enderecoID)
+                    @Html.HiddenFor(model => model.endereco.latitude, new { @id = "hddLatitude" })
+                    @Html.HiddenFor(model => model.endereco.longitude, new { @id = "hddLongitude" })
                 }
             </div>
         </div>
     </div>
 </div>
 <script src="~/Assets/Estabelecimento/js/estabelecimento.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoOBBqHuu3tiGZ4v46MGMN4c5J10xbntk&callback=loadGMaps"></script>
