@@ -183,6 +183,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cliente\cliente.cs" />
     <Compile Include="Models\Cliente\clienteEndereco.cs" />
     <Compile Include="Models\Entrega\entrega.cs" />

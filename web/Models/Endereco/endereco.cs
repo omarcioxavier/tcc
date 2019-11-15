@@ -19,6 +19,10 @@ namespace web.Models.Endereco
 
         public string cep { get; set; }
 
+        public double latitude { get; set; }
+        
+        public double longitude { get; set; }
+
         public int cidadeID { get; set; }
         
         public int estadoID { get; set; }
