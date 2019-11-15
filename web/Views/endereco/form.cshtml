@@ -44,11 +44,14 @@
                             </div>
                         </div>
                         <hr />
-                        <div class="justify-content-center">
-                            <div id="googleMap" style="width:50%;height:250px;"></div>
+                        <div class="row">
+                            <div class="col">
+                                <div id="googleMap" style="width:50%;height:250px;"></div>
+                            </div>
                         </div>
                         <br />
-                        <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                        <button type="button" class="btn btn-sm btn-secondary" onclick="ValidarEndereco();">Validar Endereço</button>
+                        <button type="submit" class="btn btn-sm btn-success" disabled>Salvar</button>
                         <hr />
                         @Html.ActionLink("Voltar", null, null, new { @class = "btn btn-sm btn-outline-warning", @onclick = "window.history.go(-1); return false;" })
                     </div>
