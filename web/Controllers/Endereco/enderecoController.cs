@@ -72,7 +72,7 @@ namespace web.Controllers.Endereco
             }
         }
 
-        public void salvar(endereco endereco)
+        public ActionResult salvar(endereco endereco)
         {
             try
             {
@@ -84,6 +84,8 @@ namespace web.Controllers.Endereco
                 {
                     inserir(endereco);
                 }
+                
+                return editar();
             }
             catch (Exception ex)
             {
@@ -117,6 +119,8 @@ namespace web.Controllers.Endereco
             enderecoAtual.complemento = endereco.complemento;
             enderecoAtual.bairro = endereco.bairro;
             enderecoAtual.cep = endereco.cep;
+            enderecoAtual.latitude = endereco.latitude;
+            enderecoAtual.longitude = endereco.longitude;
             enderecoAtual.cidadeID = endereco.cidadeID;
             enderecoAtual.estadoID = endereco.estadoID;
 
