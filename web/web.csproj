@@ -212,6 +212,7 @@
     <Compile Include="ViewModel\Pedido\pedidoListarViewModel.cs" />
     <Compile Include="ViewModel\Produto\produtoFormViewModel.cs" />
     <Compile Include="ViewModel\Produto\produtoListarViewModel.cs" />
+    <Compile Include="ViewModel\Usuario\usuarioListarViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
