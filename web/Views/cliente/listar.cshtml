@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<web.Models.Cliente.cliente>*@
-@model web.ViewModel.Cliente.clienteListarViewModel
+﻿@model web.ViewModel.Cliente.clienteListarViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -29,7 +28,7 @@
                                     </div>
                                     <div class="col-2">
                                         <label>Status</label><br />
-                                        @Html.CheckBoxFor(model => model.ativo, htmlAttributes: new { @id = "SwitchStatus", @onclick = "SetStatusLabel()", @checked = "true" })
+                                        @Html.CheckBoxFor(model => model.ativo, htmlAttributes: new { @id = "SwitchStatus", @onclick = "SetStatusLabel()" })
                                         <label id="lblStatus"></label>
                                     </div>
                                 </div>
