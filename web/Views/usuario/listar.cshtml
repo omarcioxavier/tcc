@@ -1,8 +1,9 @@
-﻿@model IEnumerable<web.Models.Usuario.usuario>
+﻿@model web.ViewModel.Usuario.usuarioListarViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="animated fadeIn">
     <div class="row">
         <div class="col-12">
@@ -12,33 +13,33 @@
                     <b>Usuários</b>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group row">
-                                <div class="col-6">
-                                    <label>Login</label>
-                                    <input class="form-control form-control-sm col-12" type="text">
+                    @using (Html.BeginForm("pesquisar", "usuario"))
+                    {
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label>Login</label>
+                                        @Html.EditorFor(model => model.login, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                                    </div>
+                                    <div class="col-2">
+                                        <label>Status</label><br />
+                                        @Html.CheckBoxFor(model => model.ativo, htmlAttributes: new { @id = "SwitchStatus", @onclick = "SetStatusLabel()" })
+                                        <label id="lblStatus"></label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-1">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
-                                        <label class="custom-control-label" for="customCheck1">Ativo</label>
+                                <br />
+                                <div class="row">
+                                    <div class="col-1">
+                                        <button type="submit" class="btn btn-sm btn-success">Pesquisar</button>
+                                    </div>
+                                    <div class="col-1">
+                                        @Html.ActionLink("Adicionar", "novo", null, new { @class = "btn btn-sm btn-outline-primary" })
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-1">
-                                    <input type="button" value="Pesquisar" class="btn btn-sm btn-success" />
-                                </div>
-                                <div class="col-1">
-                                    @Html.ActionLink("Adicionar", "novo", null, new { @class = "btn btn-sm btn-outline-primary" })
-                                </div>
-                            </div>
                         </div>
-                    </div>
+                    }
 
                     <br />
 
@@ -61,7 +62,7 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                @foreach (var item in Model)
+                                @foreach (var item in Model.usuarios)
                                 {
                                     <tr>
                                         <td>

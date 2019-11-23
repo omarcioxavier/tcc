@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using web.Models.Usuario;
 using web.Repository.DBConn;
+using web.ViewModel.Usuario;
 
 namespace web.Controllers.Usuario
 {
@@ -81,13 +83,16 @@ namespace web.Controllers.Usuario
         {
             try
             {
-                // Obtém o ID do estabelecimento
-                var estabelecimentoId = int.Parse(Session["EstabelecimentoId"].ToString());
-
                 // Obtém os usuários do estabelecimento
-                var usuarios = _context.usuarios.Where(u => u.estabelecimentoID == estabelecimentoId).OrderBy(u => u.login).ToList();
+                var usuarios = getUsuariosEstabelecimento();
 
-                return View(usuarios);
+                var viewModel = new usuarioListarViewModel()
+                {
+                    usuarios = usuarios,
+                    ativo = true
+                };
+
+                return View(viewModel);
             }
             catch (Exception ex)
             {
@@ -177,9 +182,45 @@ namespace web.Controllers.Usuario
             _context.SaveChanges();
         }
 
-        public ActionResult NaoEncontrado(usuario usuario)
+        public ActionResult pesquisar(usuarioListarViewModel usuarioPesquisa)
         {
-            return View(usuario);
+            try
+            {
+                // Obtém os usuários do estabelecimento
+                var usuarios = getUsuariosEstabelecimento();
+
+                if (usuarioPesquisa.login != null)
+                {
+                    usuarios = usuarios.Where(u => u.login.Contains(usuarioPesquisa.login)).ToList();
+                }
+
+                usuarios = usuarios.Where(u => u.ativo.Equals(usuarioPesquisa.ativo)).ToList();
+
+                var viewModel = new usuarioListarViewModel()
+                {
+                    usuarios = usuarios,
+                    ativo = usuarioPesquisa.ativo
+                };
+
+                return View("listar", viewModel);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        // Obtém o id do estabelecimento da session
+        private int getEstabelecimentoID()
+        {
+            return int.Parse(Session["EstabelecimentoId"].ToString());
+        }
+
+        // Obtém os usuarios do estabelecimento
+        private IEnumerable<usuario> getUsuariosEstabelecimento()
+        {
+            var estabelecimentoId = getEstabelecimentoID();
+            return _context.usuarios.Where(u => u.estabelecimentoID == estabelecimentoId).OrderBy(u => u.login).ToList();
         }
     }
 }
