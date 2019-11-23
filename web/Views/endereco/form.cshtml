@@ -63,12 +63,12 @@
 
                         <button type="submit" class="btn btn-sm btn-success" id="btnSalvar" disabled>Salvar</button>
                         <hr />
-                        
+
                         @Html.ActionLink("Voltar", null, null, new { @class = "btn btn-sm btn-outline-warning", @onclick = "window.history.go(-1); return false;" })
-                        
+
                         @Html.HiddenFor(model => model.endereco.enderecoID, new { @id = "hddEnderecoID" })
-                        @Html.HiddenFor(model => model.endereco.latitude, new { @id = "hddLatitude" })
-                        @Html.HiddenFor(model => model.endereco.longitude, new { @id = "hddLongitude" })
+                        @Html.HiddenFor(model => model.endereco.latitude, new { @id = "hddLatitude", @name = "endereco.latitude" })
+                        @Html.HiddenFor(model => model.endereco.longitude, new { @id = "hddLongitude", @name = "endereco.longitude" })
                     </div>
                 }
             </div>

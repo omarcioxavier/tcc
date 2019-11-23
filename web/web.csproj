@@ -204,10 +204,12 @@
     <Compile Include="Models\Log\log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DBConn\DBConn.cs" />
+    <Compile Include="ViewModel\Cliente\clienteListarViewModel.cs" />
     <Compile Include="ViewModel\Endereco\enderecoEditarViewModel.cs" />
     <Compile Include="ViewModel\Estabelecimento\estabelecimentoEditarViewModel.cs" />
     <Compile Include="ViewModel\Estabelecimento\estabelecimentoNovoViewModel.cs" />
     <Compile Include="ViewModel\Pedido\pedidoDetalhesViewModel.cs" />
+    <Compile Include="ViewModel\Pedido\pedidoListarViewModel.cs" />
     <Compile Include="ViewModel\Produto\produtoFormViewModel.cs" />
     <Compile Include="ViewModel\Produto\produtoListarViewModel.cs" />
   </ItemGroup>
@@ -367,7 +369,6 @@
     <Folder Include="Assets\Default\js\" />
     <Folder Include="Services\" />
     <Folder Include="Utils\" />
-    <Folder Include="ViewModel\Cliente\" />
     <Folder Include="Views\erro\" />
   </ItemGroup>
   <ItemGroup>

@@ -39,8 +39,8 @@ function validarEndereco() {
     var urlGMapsApi = "https://maps.googleapis.com/maps/api/geocode/json?address=" + endereco + "&key=AIzaSyDoOBBqHuu3tiGZ4v46MGMN4c5J10xbntk";
 
     $.get(urlGMapsApi, function (data, status) {
-        const latitude = Number(data.results[0].geometry.location.lat);
-        const longitude = Number(data.results[0].geometry.location.lng);
+        const latitude = (data.results[0].geometry.location.lat).toString().replace(".", ",");
+        const longitude = (data.results[0].geometry.location.lng).toString().replace(".", ",");
 
         $("#hddLatitude").val(latitude);
         $("#hddLongitude").val(longitude);
