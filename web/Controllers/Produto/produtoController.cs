@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using web.Models.Estabelecimento;
@@ -21,18 +22,12 @@ namespace web.Controllers.Produto
         {
             try
             {
-                // Obtém o ID do estabelecimento
-                var estabelecimentoId = int.Parse(Session["EstabelecimentoId"].ToString());
-
-                // Obtém os IDs dos produtos do estabelecimento
-                var produtosIds = _context.estabelecimentosProdutos.Where(e => e.estabelecimentoID == estabelecimentoId).Select(e => e.produtoID).ToArray();
+                var produtos = getProdutosEstabelecimento();
 
                 var viewModel = new produtoListarViewModel()
                 {
-                    // Obtém os produtos do estabelecimento pelos IDs
-                    produtos = _context.produtos.Where(p => produtosIds.Contains(p.produtoID)).OrderBy(p => p.descricao).ToList(),
-                    // Obtém as categorias dos produtos do estabelecimento
-                    produtoCategorias = _context.produtosCategorias.ToList()
+                    produtos = produtos,
+                    produtoCategorias = getProdutosCategorias()
                 };
 
                 return View(viewModel);
@@ -125,6 +120,60 @@ namespace web.Controllers.Produto
             produtoAtual.produtoCategoriaID = produto.produtoCategoriaID;
 
             _context.SaveChanges();
+        }
+
+        public ActionResult pesquisar(produtoListarViewModel produtoPesquisa)
+        {
+            try
+            {
+                // Obtém os produtos do estabelecimento
+                var produtos = getProdutosEstabelecimento();
+
+                if (produtoPesquisa.descricao != null)
+                {
+                    produtos = produtos.Where(p => p.descricao.Contains(produtoPesquisa.descricao)).ToList();
+                }
+
+                if (produtoPesquisa.produtoCategoriaID > 0)
+                {
+                    produtos = produtos.Where(p => p.produtoCategoriaID == produtoPesquisa.produtoCategoriaID).ToList();
+                }
+
+                var viewModel = new produtoListarViewModel()
+                {
+                    produtos = produtos,
+                    produtoCategorias = getProdutosCategorias()
+                };
+
+                return View("listar", viewModel);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        // Obtém o ID do estabelecimento
+        private int getEstabelecimentoID()
+        {
+            return int.Parse(Session["EstabelecimentoId"].ToString());
+        }
+
+        // Obtém os produtos do estabelecimento
+        private IEnumerable<produto> getProdutosEstabelecimento()
+        {
+            int estabelecimentoId = getEstabelecimentoID();
+
+            // Obtém os IDs dos produtos do estabelecimento
+            var produtosIds = _context.estabelecimentosProdutos.Where(e => e.estabelecimentoID == estabelecimentoId).Select(e => e.produtoID).ToArray();
+
+            return _context.produtos.Where(p => produtosIds.Contains(p.produtoID)).OrderBy(p => p.descricao).ToList();
+        }
+
+        // Obtém as categorias do estabelecimento
+        private IEnumerable<produtoCategoria> getProdutosCategorias()
+        {
+            return _context.produtosCategorias.ToList();
         }
     }
 }

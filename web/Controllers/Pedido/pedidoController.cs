@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using web.Models.Endereco;
+using web.Models.Pedido;
 using web.Repository.DBConn;
 using web.ViewModel.Pedido;
-using web.Models.Endereco;
 
 namespace web.Controllers.Pedido
 {
@@ -25,25 +27,20 @@ namespace web.Controllers.Pedido
         {
             try
             {
-                // Obtém o ID do estabelecimento
-                var estabelecimentoId = int.Parse(Session["EstabelecimentoId"].ToString());
-
-
                 // Obtém os pedidos do estabelecimento
-                var pedidos = _context.pedidos.Where(p => p.estabelecimentoID == estabelecimentoId);
+                var pedidos = getPedidosEstabelecimento(getEstabelecimentoID(), id);
+                
+                // Filtra pedidos dos últimos 30 dias
+                pedidos = pedidos.Where(p => p.dataPedido >= DateTime.Now.AddDays(-30)).ToList();
 
-                // Se clienteID != null, filtra por cliente
-                if (id != null)
+                var ViewModel = new pedidoListarViewModel()
                 {
-                    pedidos = pedidos.Where(p => p.clienteID == id);
-                }
+                    pedidos = pedidos,
+                    dataInicio = DateTime.Now.AddDays(-30),
+                    dataFim = DateTime.Now
+                };
 
-                foreach (var pedido in pedidos)
-                {
-                    pedido.cliente = _context.clientes.Where(c => c.clienteID == pedido.clienteID).SingleOrDefault();
-                }
-
-                return View(pedidos);
+                return View(ViewModel);
             }
             catch (Exception ex)
             {
@@ -51,6 +48,7 @@ namespace web.Controllers.Pedido
             }
         }
 
+        [HttpGet]
         public ActionResult detalhes(int id)
         {
             try
@@ -77,9 +75,9 @@ namespace web.Controllers.Pedido
 
                 // Obtém os produtos do pedido
                 var produtosPedido = _context.produtosPedidos.Where(pp => pp.pedidoID == pedido.pedidoID).ToList();
-                foreach(var produtoPedido in produtosPedido)
+                foreach (var produtoPedido in produtosPedido)
                 {
-                    produtoPedido.produto = _context.produtos.Where(p=>p.produtoID == produtoPedido.produtoID).SingleOrDefault();
+                    produtoPedido.produto = _context.produtos.Where(p => p.produtoID == produtoPedido.produtoID).SingleOrDefault();
                 }
 
                 var viewModel = new pedidoDetalhesViewModel()
@@ -97,6 +95,56 @@ namespace web.Controllers.Pedido
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        public ActionResult pesquisar(pedidoListarViewModel pedidoPesquisa)
+        {
+            try
+            {
+                // Obtém os pedidos do estabelecimento
+                var pedidos = getPedidosEstabelecimento(getEstabelecimentoID(), null);
+
+                // Filtra pedidos pela data informada
+                pedidos = pedidos.Where(p => p.dataPedido >= pedidoPesquisa.dataInicio && p.dataPedido <= pedidoPesquisa.dataFim).ToList();
+
+                var viewModel = new pedidoListarViewModel()
+                {
+                    pedidos = pedidos,
+                    dataInicio = pedidoPesquisa.dataInicio,
+                    dataFim = pedidoPesquisa.dataFim
+                };
+
+                return View("listar", viewModel);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        // Obtém o id do estabelecimento da session
+        private int getEstabelecimentoID()
+        {
+            return int.Parse(Session["EstabelecimentoId"].ToString());
+        }
+
+        private IEnumerable<pedido> getPedidosEstabelecimento(int estabelecimentoID, int? clienteID)
+        {
+            // Obtém os pedidos do estabelecimento
+            var pedidos = _context.pedidos.Where(p => p.estabelecimentoID == estabelecimentoID).ToList();
+
+            // Se clienteID != null, filtra pedidos por cliente
+            if (clienteID != null)
+            {
+                pedidos = pedidos.Where(p => p.clienteID == clienteID).ToList();
+            }
+
+            foreach (var pedido in pedidos)
+            {
+                pedido.cliente = _context.clientes.Where(c => c.clienteID == pedido.clienteID).SingleOrDefault();
+            }
+
+            return pedidos;
         }
     }
 }
