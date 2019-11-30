@@ -10,6 +10,7 @@ namespace web
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-3.4.1.min.js",
                         "~/Scripts/inputmask/inputmask.min.js",
+                        "~/Scripts/jquery.mask.js",
                         "~/Scripts/inputmask/jquery.inputmask.js",
                         "~/Scripts/inputmask/inputmask.extensions.js",
                         "~/Scripts/inputmask/inputmask.date.extensions.js",
