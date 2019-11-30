@@ -35,7 +35,6 @@ function loadGMaps() {
 // Valida o endereço com o google maps
 function validarEndereco() {
     var endereco = montarEndereco();
-
     var urlGMapsApi = "https://maps.googleapis.com/maps/api/geocode/json?address=" + endereco + "&key=AIzaSyDoOBBqHuu3tiGZ4v46MGMN4c5J10xbntk";
 
     $.get(urlGMapsApi, function (data, status) {
@@ -73,34 +72,34 @@ function montarEndereco() {
     const estado = $("#ddlEstados option:selected").text();
 
     if (logradouro != "" && logradouro != "-") {
-        endereco += endereco != "" ? ", " : "";
+        endereco += endereco != "" ? "," : "";
         endereco += logradouro;
     }
 
     if (numero != "" && numero != "-") {
-        endereco += endereco != "" ? ", " : "";
+        endereco += endereco != "" ? "," : "";
         endereco += numero;
     }
 
     if (bairro != "" && bairro != "-") {
-        endereco += endereco != "" ? ", " : "";
+        endereco += endereco != "" ? "," : "";
         endereco += bairro;
     }
 
     if (complemento != "" && complemento != "-") {
-        endereco += endereco != "" ? ", " : "";
+        endereco += endereco != "" ? "," : "";
         endereco += complemento;
     }
 
     if (cep != "" && cep != "-") {
-        endereco += endereco != "" ? ", " : "";
+        endereco += endereco != "" ? "," : "";
         endereco += cep;
     }
 
-    endereco += endereco != "" ? ", " : "";
+    endereco += endereco != "" ? "," : "";
     endereco += cidade;
 
-    endereco += endereco != "" ? ", " : "";
+    endereco += endereco != "" ? "," : "";
     endereco += estado;
 
     return endereco;

@@ -26,7 +26,7 @@ namespace web.Models.Endereco
         public int cidadeID { get; set; }
         
         public int estadoID { get; set; }
-
+        
         [ForeignKey("cidadeID")]
         public virtual cidade cidade { get; set; }
         
