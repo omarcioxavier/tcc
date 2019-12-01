@@ -13,6 +13,8 @@ namespace web.ViewModel.Pedido
         
         public endereco endereco { get; set; }
 
+        public pagamento pagamento { get; set; }
+
         public IEnumerable<produtoPedido> produtosPedidos { get; set; }
 
         public string enderecoCompleto { get; set; }
