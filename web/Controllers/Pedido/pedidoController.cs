@@ -57,7 +57,7 @@ namespace web.Controllers.Pedido
         {
             try
             {
-                // Obtém os pedidos do estabelecimento
+                // Obtém os pedido
                 var pedido = _context.pedidos.Where(p => p.pedidoID == id).SingleOrDefault();
 
                 // Obtém o cliente do pedido
@@ -163,26 +163,27 @@ namespace web.Controllers.Pedido
             {
                 if (jsonPedido == null)
                 {
-                    jsonPedido = testJson.json.Replace("'", "\"");
+                    jsonPedido = testJson.json;
                 }
+
+                jsonPedido = jsonPedido.Replace("'", "\"");
 
                 // Deserializa o json para objeto
                 pedidoResponse pedidoRecebido = JsonConvert.DeserializeObject<pedidoResponse>(jsonPedido);
 
                 var pedido = new pedido();
                 int quantidade = 0;
-                float total = 0;
 
                 // Calcula quantidade de itens e o total
                 foreach (var item in pedidoRecebido.itemOrders)
                 {
-                    quantidade = item.amount;
-                    total = item.value * item.amount;
+                    quantidade = quantidade + item.amount;
                 }
 
-                if (total != pedidoRecebido.total)
+                // Calcula quantidade de drinks
+                foreach (var item in pedidoRecebido.itemDrinks)
                 {
-                    throw new Exception("Valores totais estão divergentes. Pedido não efetuado.");
+                    quantidade = quantidade + item.amount;
                 }
 
                 // Monta objeto pedido
@@ -207,6 +208,7 @@ namespace web.Controllers.Pedido
                     produtoPedido.produtoID = item.id;
                     produtoPedido.pedidoID = pedido.pedidoID;
                     produtoPedido.quantidade = item.amount;
+                    produtoPedido.valorProduto = item.value;
 
                     // Insere na tabela produtoPedido
                     _context.produtosPedidos.Add(produtoPedido);
@@ -222,6 +224,7 @@ namespace web.Controllers.Pedido
                     produtoPedido.produtoID = item.id;
                     produtoPedido.pedidoID = pedido.pedidoID;
                     produtoPedido.quantidade = item.amount;
+                    produtoPedido.valorProduto = item.value;
 
                     // Insere na tabela produtoPedido
                     _context.produtosPedidos.Add(produtoPedido);
@@ -234,7 +237,6 @@ namespace web.Controllers.Pedido
             {
                 throw new Exception(ex.Message);
             }
-
         }
         #endregion
     }

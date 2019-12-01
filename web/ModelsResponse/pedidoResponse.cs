@@ -57,13 +57,14 @@ namespace web.ModelsResponse
         public int id { get; set; }
     }
 
+    // TESTE
     public static class testJson
     {
         public static string json
         {
             get
             {
-                return "[{'total':67.5,'itemOrders':[{'desc':'oregano, parmesao, catupiry e mussarela','amount':1,'type':'mussarela','id':3,'value':20.5,'size':'pequena'},{'desc':'oregano, parmesao, catupiry e mussarela','amount':1,'type':'mussarela','id':1,'value':37.5,'size':'grande'}],'itemDrinks':[{'drinkDetails':'tradicional','drinkSize':'2 litros','drinkName':'coca-cola','amount':1,'value':9.5,'id':8}],'pagamento':'cartao','restaurante':{'name':'Bar do Tina','address':'Rua Teste dos testes','id':1},'data':'2019-11-28 00:39:39'}]";
+                return "{'total':67.5,'itemOrders':[{'desc':'oregano, parmesao, catupiry e mussarela','amount':1,'type':'mussarela','id':3,'value':20.5,'size':'pequena'},{'desc':'oregano, parmesao, catupiry e mussarela','amount':1,'type':'mussarela','id':1,'value':37.5,'size':'grande'}],'itemDrinks':[{'drinkDetails':'tradicional','drinkSize':'2 litros','drinkName':'coca-cola','amount':1,'value':9.5,'id':8}],'pagamento':'cartao','restaurante':{'name':'Bar do Tina','address':'Rua Teste dos testes','id':1},'data':'2019-11-28 00:39:39'}";
             }
         }
     }
