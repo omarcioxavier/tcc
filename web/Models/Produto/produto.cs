@@ -12,7 +12,11 @@ namespace web.Models.Produto
         [Key]
         public int produtoID { get; set; }
         
+        public string nome { get; set; }
+
         public string descricao { get; set; }
+        
+        public string tamanho { get; set; }
 
         public float precoUnitario { get; set; }
 

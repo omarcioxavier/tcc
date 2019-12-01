@@ -114,6 +114,7 @@ namespace web.Controllers.Produto
         public void atualizar(produto produto)
         {
             var produtoAtual = _context.produtos.Where(p => p.produtoID == produto.produtoID).SingleOrDefault();
+            produtoAtual.nome = produto.nome;
             produtoAtual.descricao = produto.descricao;
             produtoAtual.precoUnitario = produto.precoUnitario;
             produtoAtual.ativo = produto.ativo;
@@ -129,9 +130,9 @@ namespace web.Controllers.Produto
                 // Obtém os produtos do estabelecimento
                 var produtos = getProdutosEstabelecimento();
 
-                if (produtoPesquisa.descricao != null)
+                if (produtoPesquisa.nome != null)
                 {
-                    produtos = produtos.Where(p => p.descricao.Contains(produtoPesquisa.descricao)).ToList();
+                    produtos = produtos.Where(p => p.nome.Contains(produtoPesquisa.nome)).ToList();
                 }
 
                 if (produtoPesquisa.produtoCategoriaID > 0)
@@ -167,7 +168,7 @@ namespace web.Controllers.Produto
             // Obtém os IDs dos produtos do estabelecimento
             var produtosIds = _context.estabelecimentosProdutos.Where(e => e.estabelecimentoID == estabelecimentoId).Select(e => e.produtoID).ToArray();
 
-            return _context.produtos.Where(p => produtosIds.Contains(p.produtoID)).OrderBy(p => p.descricao).ToList();
+            return _context.produtos.Where(p => produtosIds.Contains(p.produtoID)).OrderBy(p => p.nome).ToList();
         }
 
         // Obtém as categorias do estabelecimento

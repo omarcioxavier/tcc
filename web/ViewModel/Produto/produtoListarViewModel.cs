@@ -9,7 +9,7 @@ namespace web.ViewModel.Produto
         
         public IEnumerable<produtoCategoria> produtoCategorias { get; set; }
 
-        public string descricao { get; set; }
+        public string nome { get; set; }
 
         public int produtoCategoriaID { get; set; }
     }
