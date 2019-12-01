@@ -190,10 +190,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ModelsResponse\estabelecimentoResponse.cs" />
+    <Compile Include="ModelsResponse\drinksResponse .cs" />
+    <Compile Include="ModelsResponse\itensResponse.cs" />
     <Compile Include="Models\Cliente\cliente.cs" />
     <Compile Include="Models\Cliente\clienteEndereco.cs" />
     <Compile Include="Models\Entrega\entrega.cs" />
+    <Compile Include="Models\Enums\enumProdutoCategoria.cs" />
     <Compile Include="Models\Usuario\usuario.cs" />
     <Compile Include="Models\Utils\Modulo\modulo.cs" />
     <Compile Include="Models\Pedido\pedido.cs" />
