@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using web.Models.Produto;
 
@@ -14,9 +13,11 @@ namespace web.Models.Pedido
         public int quantidade { get; set; }
 
         public int produtoID { get; set; }
-        
+
         public int pedidoID { get; set; }
-        
+
+        public float valorProduto { get; set; }
+
         [ForeignKey("produtoID")]
         public virtual produto produto { get; set; }
 

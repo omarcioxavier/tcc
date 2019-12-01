@@ -13,9 +13,10 @@
                     <b>Detalhes</b>
                 </div>
                 <div class="card-body">
+                    <label><b>Cliente</b></label>
                     <div class="row">
                         <div class="col-5">
-                            <label>Cliente</label>
+                            <label>Nome</label>
                             <input type="text" class="form-control disabled col-12" value="@Html.DisplayFor(model => model.cliente.nome)" />
                         </div>
                         <div class="col-3">
@@ -26,7 +27,7 @@
                     <hr />
                     <div class="row">
                         <div class="col-12">
-                            <label>Endereço de Entrega</label>
+                            <label><b>Endereço de Entrega</b></label>
                             @Html.TextAreaFor(model => model.enderecoCompleto, new { @class = "form-control disabled col-12", @id = "txtEndereco" })
                             <br />
                         </div>
@@ -40,12 +41,16 @@
                         </div>
                     </div>
                     <hr />
-                    <label>Itens do Pedido</label>
+                    <label><b>Itens do Pedido</b></label>
                     <table class="table table-sm table-hover">
                         <thead class="thead-light">
                             <tr>
                                 <th>
                                     <i class="fa fa-list"></i>
+                                    Nome
+                                </th>
+                                <th>
+                                    <i class="fa fa-pencil"></i>
                                     Descrição
                                 </th>
                                 <th>
@@ -62,18 +67,22 @@
                         {
                             <tr>
                                 <td>
+                                    @Html.DisplayFor(modelItem => item.produto.nome)
+                                </td>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.produto.descricao)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.quantidade)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.produto.precoUnitario, new { @class = "money" })
+                                    @Html.DisplayFor(modelItem => item.valorProduto, new { @class = "money" })
                                 </td>
                             </tr>
                         }
                         <tfoot>
                             <tr class="table-light">
+                                <td></td>
                                 <td><b>TOTAL</b></td>
                                 <td><b>@Html.DisplayFor(modelItem => Model.pedido.quantidadeTotal)</b></td>
                                 <td><b>@Html.DisplayFor(modelItem => Model.pedido.valorPedido)</b></td>
