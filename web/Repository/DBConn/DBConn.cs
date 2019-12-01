@@ -14,9 +14,15 @@ namespace web.Repository.DBConn
     public class DBConn : DbContext
     {
         #region Construtores
-        public DBConn() : base("tcc_db")
+        // LOCAL
+        //private static string dbName = "tcc_db";
+
+        // CLOUD
+        private static string dbName = "DB_A5089E_MarcioXavier";
+
+        public DBConn() : base(dbName)
         {
-            this.Configuration.ProxyCreationEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public DBConn Create()
@@ -59,7 +65,7 @@ namespace web.Repository.DBConn
         public DbSet<modulo> modulos { get; set; }
 
         public DbSet<usuario> usuarios { get; set; }
-        
+
         public DbSet<pagamento> pagamentos { get; set; }
         #endregion
     }

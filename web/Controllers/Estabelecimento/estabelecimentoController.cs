@@ -30,9 +30,17 @@ namespace web.Controllers.Estabelecimento
         {
             try
             {
+                //SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["tcc_dbConn"].ConnectionString);
+                //conn.Open();
+                //string sql = @"SELECT * FROM estabelecimentoCategoria;";
+                //var categorias = conn.Query<estabelecimentoCategoria>(sql).ToList();
+                //conn.Close();
+
+                var categorias = _context.estabelecimentosCategorias.OrderBy(ec => ec.descricao).ToList();
+
                 var viewModel = new estabelecimentoNovoViewModel()
                 {
-                    estabelecimentoCategorias = _context.estabelecimentosCategorias.OrderBy(ec => ec.descricao).ToList()
+                    estabelecimentoCategorias = categorias
                 };
                 return View(viewModel);
             }
