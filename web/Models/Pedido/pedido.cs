@@ -23,11 +23,16 @@ namespace web.Models.Pedido
         public int clienteID { get; set; }
 
         public int estabelecimentoID { get; set; }
+        
+        public int pagamentoID { get; set; }
 
         [ForeignKey("clienteID")]
         public virtual cliente cliente { get; set; }
 
         [ForeignKey("estabelecimentoID")]
         public virtual estabelecimento estabelecimento { get; set; }
+
+        [ForeignKey("pagamentoID")]
+        public virtual pagamento pagamento { get; set; }
     }
 }

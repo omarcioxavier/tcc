@@ -59,6 +59,8 @@ namespace web.Repository.DBConn
         public DbSet<modulo> modulos { get; set; }
 
         public DbSet<usuario> usuarios { get; set; }
+        
+        public DbSet<pagamento> pagamentos { get; set; }
         #endregion
     }
 }
