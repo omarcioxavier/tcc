@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System.Configuration;
+using System.Data.Entity;
+using System.Data.SqlClient;
 using web.Models.Cliente;
 using web.Models.Endereco;
 using web.Models.Entrega;
@@ -14,13 +16,9 @@ namespace web.Repository.DBConn
     public class DBConn : DbContext
     {
         #region Construtores
-        // LOCAL
-        //private static string dbName = "tcc_db";
+        private static string conn = new SqlConnection(ConfigurationManager.ConnectionStrings["tcc_dbConn"].ConnectionString).ConnectionString;
 
-        // CLOUD
-        private static string dbName = "DB_A5089E_MarcioXavier";
-
-        public DBConn() : base(dbName)
+        public DBConn() : base(conn)
         {
             Configuration.ProxyCreationEnabled = false;
         }

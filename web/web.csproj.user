@@ -20,6 +20,13 @@
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <WebStackScaffolding_DbContextTypeFullName>web.Repository.DBConn.DBConn</WebStackScaffolding_DbContextTypeFullName>
     <NameOfLastUsedPublishProfile>webtcc - Web Deploy</NameOfLastUsedPublishProfile>
+    <GoogleCloudPublishChoice>Gce</GoogleCloudPublishChoice>
+    <GoogleComputeEnginePublishInstanceName>webtcc</GoogleComputeEnginePublishInstanceName>
+    <GoogleComputeEnginePublishInstanceZone>southamerica-east1-b</GoogleComputeEnginePublishInstanceZone>
+    <GoogleComputeEnginePublishInstanceUserName>admin</GoogleComputeEnginePublishInstanceUserName>
+    <GoogleComputeEnginePublishOpenWebsite>True</GoogleComputeEnginePublishOpenWebsite>
+    <GoogleComputeEnginePublishLaunchRemoteDebugger>False</GoogleComputeEnginePublishLaunchRemoteDebugger>
+    <GoogleComputeEnginePublishSiteName>TCC - Web</GoogleComputeEnginePublishSiteName>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
