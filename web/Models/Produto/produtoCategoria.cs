@@ -13,6 +13,5 @@ namespace web.Models.Produto
         public string descricao { get; set; }
 
         public virtual IEnumerable<produto> produtos{ get; set; }
-
     }
 }

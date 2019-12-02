@@ -30,9 +30,11 @@ namespace web.Controllers.Estabelecimento
         {
             try
             {
+                var categorias = _context.estabelecimentosCategorias.OrderBy(ec => ec.descricao).ToList();
+
                 var viewModel = new estabelecimentoNovoViewModel()
                 {
-                    estabelecimentoCategorias = _context.estabelecimentosCategorias.OrderBy(ec => ec.descricao).ToList()
+                    estabelecimentoCategorias = categorias
                 };
                 return View(viewModel);
             }

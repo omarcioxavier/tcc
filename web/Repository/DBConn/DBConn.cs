@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System.Configuration;
+using System.Data.Entity;
+using System.Data.SqlClient;
 using web.Models.Cliente;
 using web.Models.Endereco;
 using web.Models.Entrega;
@@ -14,9 +16,11 @@ namespace web.Repository.DBConn
     public class DBConn : DbContext
     {
         #region Construtores
-        public DBConn() : base("tcc_db")
+        private static string conn = new SqlConnection(ConfigurationManager.ConnectionStrings["tcc_dbConn"].ConnectionString).ConnectionString;
+
+        public DBConn() : base(conn)
         {
-            this.Configuration.ProxyCreationEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
         }
 
         public DBConn Create()
@@ -59,7 +63,7 @@ namespace web.Repository.DBConn
         public DbSet<modulo> modulos { get; set; }
 
         public DbSet<usuario> usuarios { get; set; }
-        
+
         public DbSet<pagamento> pagamentos { get; set; }
         #endregion
     }

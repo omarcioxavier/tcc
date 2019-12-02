@@ -41,22 +41,22 @@ namespace web.Controllers.Usuario
             try
             {
                 usuario usuario = new usuario();
-                
-                if(obj != null)
-                    usuario = _context.usuarios.Where(u => u.login == obj.login && u.senha == obj.senha).SingleOrDefault();
 
-                if (usuario != null && usuario.ativo)
-                {
-                    Session["UserId"] = usuario.usuarioID;
-                    Session["UserName"] = usuario.login;
-                    Session["EstabelecimentoId"] = usuario.estabelecimentoID;
+                usuario = _context.usuarios.Where(u => u.login == obj.login && u.senha == obj.senha).SingleOrDefault();
 
-                    return RedirectToAction("listar", "pedido");
-                }
-                else
+                if (usuario != null)
                 {
+                    if (usuario.usuarioID != 0 && usuario.ativo)
+                    {
+                        Session["UserId"] = usuario.usuarioID;
+                        Session["UserName"] = usuario.login;
+                        Session["EstabelecimentoId"] = usuario.estabelecimentoID;
+
+                        return RedirectToAction("listar", "pedido");
+                    }
                     return View("login");
                 }
+                return View("login");
             }
             catch (Exception ex)
             {
