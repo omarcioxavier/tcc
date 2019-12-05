@@ -149,7 +149,7 @@ namespace web.Controllers.Estabelecimento
 
             conn.Open();
 
-            // Retorna os IDs dos estabelecimentos que estão dentro do raio de 5 KM com relação as coordenadas passadas
+            // Retorna os IDs dos estabelecimentos que estão ativos e dentro do raio de 5 KM com relação as coordenadas passadas
             sql = @"SELECT * FROM fnCalcularDistancia(@latitude, @longitude);";
             var estabelecimentosIds = conn.Query<int>(sql, new { latitude, longitude }).ToArray();
 
@@ -158,6 +158,8 @@ namespace web.Controllers.Estabelecimento
 
             if (sabor != null)
             {
+                //List<string> sabores = sabor.Split(',').ToList();
+
                 // Se a pesquisa for por sabor, retorna estabelecimentos que tenham o sabor escolhido
                 sabor = "%" + sabor + "%";
                 sql = @"SELECT DISTINCT(E.estabelecimentoID) FROM estabelecimento E

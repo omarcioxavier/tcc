@@ -97,3 +97,6 @@ D:\Projetos\Asp.net\Trabalho Final\tcc\web\obj\Release\web.csproj.CoreCompileInp
 D:\Projetos\Asp.net\Trabalho Final\tcc\web\obj\Release\web.csproj.CopyComplete
 D:\Projetos\Asp.net\Trabalho Final\tcc\web\obj\Release\web.dll
 D:\Projetos\Asp.net\Trabalho Final\tcc\web\obj\Release\web.pdb
+D:\Projetos\Asp.net\Trabalho Final\tcc\web\bin\Dapper.dll
+D:\Projetos\Asp.net\Trabalho Final\tcc\web\bin\Dapper.Mapper.dll
+D:\Projetos\Asp.net\Trabalho Final\tcc\web\bin\Dapper.xml

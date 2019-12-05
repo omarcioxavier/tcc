@@ -2,4 +2,6 @@
 /web/bin/*
 /web/obj/Debug/*
 /web/obj/Release/*
+/web/Properties/PublishProfiles/*
 /web/Migrations/*
+/web/Web.config

@@ -2,7 +2,7 @@
 {
     public enum enumProdutoCategoria
     {
-        bebida = 3,
-        pizza = 4
+        pizza = 1,
+        bebida = 2
     }
 }

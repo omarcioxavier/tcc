@@ -13,9 +13,10 @@
                     <b>Detalhes</b>
                 </div>
                 <div class="card-body">
+                    <label><b>Cliente</b></label>
                     <div class="row">
                         <div class="col-5">
-                            <label>Cliente</label>
+                            <label>Nome</label>
                             <input type="text" class="form-control disabled col-12" value="@Html.DisplayFor(model => model.cliente.nome)" />
                         </div>
                         <div class="col-3">
@@ -23,24 +24,33 @@
                             <input type="text" class="form-control disabled col-12" value="@Html.DisplayFor(model => model.pedido.dataPedido)" />
                         </div>
                     </div>
+                    <hr />
                     <div class="row">
                         <div class="col-12">
-                            <label>Endereço de Entrega</label>
-                            @Html.TextAreaFor(model => model.endereco, new { @class = "form-control disabled col-12" })
+                            <label><b>Endereço de Entrega</b></label>
+                            @Html.TextAreaFor(model => model.enderecoCompleto, new { @class = "form-control disabled col-12", @id = "txtEndereco" })
+                            <br />
                         </div>
                     </div>
                     <br />
-                    @if (Model.pedido.entrega)
-                    {
-                        @Html.ActionLink("Detalhes da entrega", "listar", "entrega", new { id = Model.pedido.pedidoID }, new { @class = "btn btn-sm btn-success" })
-                    }
+                    <div class="row">
+                        <div class="col">
+                            <div id="googleMap" style="width:50%;height:250px;"></div>
+                            @Html.HiddenFor(model => model.endereco.latitude, new { @id = "hddLatitude" })
+                            @Html.HiddenFor(model => model.endereco.longitude, new { @id = "hddLongitude" })
+                        </div>
+                    </div>
                     <hr />
-                    <label>Itens do Pedido</label>
+                    <label><b>Itens do Pedido</b></label>
                     <table class="table table-sm table-hover">
                         <thead class="thead-light">
                             <tr>
                                 <th>
                                     <i class="fa fa-list"></i>
+                                    Nome
+                                </th>
+                                <th>
+                                    <i class="fa fa-pencil"></i>
                                     Descrição
                                 </th>
                                 <th>
@@ -57,24 +67,34 @@
                         {
                             <tr>
                                 <td>
+                                    @Html.DisplayFor(modelItem => item.produto.nome)
+                                </td>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.produto.descricao)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.quantidade)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.produto.precoUnitario, new { @class = "money" })
+                                    @Html.DisplayFor(modelItem => item.valorProduto, new { @class = "money" })
                                 </td>
                             </tr>
                         }
                         <tfoot>
                             <tr class="table-light">
+                                <td></td>
                                 <td><b>TOTAL</b></td>
                                 <td><b>@Html.DisplayFor(modelItem => Model.pedido.quantidadeTotal)</b></td>
                                 <td><b>@Html.DisplayFor(modelItem => Model.pedido.valorPedido)</b></td>
                             </tr>
                         </tfoot>
                     </table>
+                    <div class="row">
+                        <div class="col-3">
+                            <label>Pagamento</label>
+                            <input type="text" class="form-control disabled col-12" value="@Html.DisplayFor(model => model.pagamento.descricao)" />
+                        </div>
+                    </div>
                     <br />
                     @Html.ActionLink("Voltar", "listar", null, new { @class = "btn btn-sm btn-outline-warning" })
                 </div>
@@ -82,3 +102,5 @@
         </div>
     </div>
 </div>
+<script src="~/Assets/Estabelecimento/js/pedido.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoOBBqHuu3tiGZ4v46MGMN4c5J10xbntk&callback=loadGMaps"></script>

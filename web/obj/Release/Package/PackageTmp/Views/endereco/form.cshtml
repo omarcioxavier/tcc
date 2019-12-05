@@ -17,22 +17,26 @@
                         <div class="row">
                             <div class="col-6">
                                 <label>Logradouro</label>
-                                @Html.EditorFor(model => model.endereco.logradouro, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                                @Html.EditorFor(model => model.endereco.logradouro, new { htmlAttributes = new { @class = "form-control form-control-sm col-12", @id = "txtLogradouro" } })
                             </div>
 
                             <div class="col-md-2">
-                                <label>Numero</label>
-                                @Html.EditorFor(model => model.endereco.numero, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                                <label>Número</label>
+                                @Html.EditorFor(model => model.endereco.numero, new { htmlAttributes = new { @class = "form-control form-control-sm col-12", @id = "txtNumero" } })
+                            </div>
+                            <div class="col-md-4">
+                                <label>Bairro</label>
+                                @Html.EditorFor(model => model.endereco.bairro, new { htmlAttributes = new { @class = "form-control form-control-sm col-12", @id = "txtBairro" } })
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label>Complemento</label>
-                                @Html.EditorFor(model => model.endereco.complemento, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                                @Html.EditorFor(model => model.endereco.complemento, new { htmlAttributes = new { @class = "form-control form-control-sm col-12", @id = "txtComplemento" } })
                             </div>
-                            <div class="col-md-3">
-                                <label>Bairro</label>
-                                @Html.EditorFor(model => model.endereco.bairro, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                            <div class="col-md-2">
+                                <label>CEP</label>
+                                @Html.EditorFor(model => model.endereco.cep, new { htmlAttributes = new { @class = "form-control form-control-sm col-12 cep", @id = "txtCep" } })
                             </div>
                             <div class="col-3">
                                 <label>Estado</label><br />
@@ -44,14 +48,33 @@
                             </div>
                         </div>
                         <br />
-                        <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                        <div class="row">
+                            <div class="col-3">
+                                <button type="button" class="btn btn-sm btn-primary" onclick="validarEndereco();">Confirmar Endereço</button>
+                            </div>
+                        </div>
                         <hr />
+                        <div class="row">
+                            <div class="col">
+                                <div id="googleMap" style="width:50%;height:250px;"></div>
+                            </div>
+                        </div>
+                        <br />
+
+                        <button type="submit" class="btn btn-sm btn-success" id="btnSalvar" disabled>Salvar</button>
+                        <hr />
+
                         @Html.ActionLink("Voltar", null, null, new { @class = "btn btn-sm btn-outline-warning", @onclick = "window.history.go(-1); return false;" })
+
+                        @Html.HiddenFor(model => model.endereco.enderecoID, new { @id = "hddEnderecoID" })
+                        @Html.HiddenFor(model => model.endereco.latitude, new { @id = "hddLatitude", @name = "endereco.latitude" })
+                        @Html.HiddenFor(model => model.endereco.longitude, new { @id = "hddLongitude", @name = "endereco.longitude" })
                     </div>
-                    @Html.HiddenFor(model => model.endereco.enderecoID)
                 }
             </div>
         </div>
     </div>
 </div>
 <script src="~/Assets/Estabelecimento/js/estabelecimento.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoOBBqHuu3tiGZ4v46MGMN4c5J10xbntk&callback=loadGMaps"></script>
+<script src="~/Scripts/sweetalert2.all.min.js"></script>

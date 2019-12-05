@@ -1,4 +1,4 @@
-﻿@model IEnumerable<web.Models.Cliente.cliente>
+﻿@model web.ViewModel.Cliente.clienteListarViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,34 +13,34 @@
                     <b>Clientes</b>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group row">
-                                <div class="col-6">
-                                    <label>Nome</label>
-                                    <input class="form-control form-control-sm col-12" type="text">
+                    @using (Html.BeginForm("pesquisar", "cliente"))
+                    {
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label>Nome</label>
+                                        @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "form-control form-control-sm col-12" } })
+                                    </div>
+                                    <div class="col-3">
+                                        <label>Celular</label>
+                                        @Html.EditorFor(model => model.celular, new { htmlAttributes = new { @class = "form-control form-control-sm col-12 celular" } })
+                                    </div>
+                                    <div class="col-2">
+                                        <label>Status</label><br />
+                                        @Html.CheckBoxFor(model => model.ativo, htmlAttributes: new { @id = "SwitchStatus", @onclick = "SetStatusLabel()" })
+                                        <label id="lblStatus"></label>
+                                    </div>
                                 </div>
-                                <div class="col-3">
-                                    <label>Celular</label>
-                                    <input class="form-control form-control-sm celular col-12" type="text">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-1">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
-                                        <label class="custom-control-label" for="customCheck1">Ativo</label>
+                                <br />
+                                <div class="row">
+                                    <div class="col-1">
+                                        <button type="submit" class="btn btn-sm btn-success">Pesquisar</button>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-1">
-                                    <input type="button" value="Pesquisar" class="btn btn-sm btn-success" />
-                                </div>
-                            </div>
                         </div>
-                    </div>
+                    }
 
                     <br />
 
@@ -68,7 +68,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model)
+                                    @foreach (var item in Model.clientes)
                                     {
                                         <tr>
                                             <td>

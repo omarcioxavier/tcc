@@ -22,7 +22,7 @@
                         <h3>LOGIN</h3>
                     </div>
                     <div class="login-form">
-                        @Html.EditorFor(model => model.login, new { htmlAttributes = new { @id = "txtLogin", placeholder = "Email", autocomplete = "off" } })
+                        @Html.EditorFor(model => model.login, new { htmlAttributes = new { @id = "txtLogin", placeholder = "Email", autocomplete = "on" } })
                         @Html.EditorFor(model => model.senha, new { htmlAttributes = new { @id = "txtSenha", placeholder = "Senha", @type = "password" } })
                         <button type="submit">Entrar</button>
                         <small class="text-center">
