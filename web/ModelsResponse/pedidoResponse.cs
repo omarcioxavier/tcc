@@ -16,43 +16,43 @@ namespace web.ModelsResponse
         public restaurante restaurante { get; set; }
 
         public DateTime data { get; set; }
+
+        public string nome { get; set; }
     }
 
     public class itemOrders
     {
+        public int id { get; set; }
+
+        public float value { get; set; }
+        
+        public string size { get; set; }
+        
         public string desc { get; set; }
 
         public int amount { get; set; }
 
         public string type { get; set; }
-
-        public int id { get; set; }
-
-        public float value { get; set; }
-
-        public string size { get; set; }
     }
 
     public class itemDrinks
     {
-        public string drinkDetails { get; set; }
-
-        public string drinkSize { get; set; }
-
         public string drinkName { get; set; }
 
         public int amount { get; set; }
-
+        
         public float value { get; set; }
-
+        
         public int id { get; set; }
+        
+        public string drinkDetails { get; set; }
+
+        public string drinkSize { get; set; }
     }
 
     public class restaurante
     {
         public string name { get; set; }
-
-        public string address { get; set; }
 
         public int id { get; set; }
     }

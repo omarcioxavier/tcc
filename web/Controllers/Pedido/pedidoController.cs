@@ -34,14 +34,17 @@ namespace web.Controllers.Pedido
                 // Obtém os pedidos do estabelecimento
                 var pedidos = getPedidosEstabelecimento(getEstabelecimentoID(), id);
 
+                DateTime dtInicio = DateTime.Now.AddDays(-30);
+                DateTime dtFim = DateTime.Now.AddDays(-30);
+                
                 // Filtra pedidos dos últimos 30 dias
-                pedidos = pedidos.Where(p => p.dataPedido >= DateTime.Now.AddDays(-30)).ToList();
+                pedidos = pedidos.Where(p => p.dataPedido >= dtInicio).ToList();
 
                 var ViewModel = new pedidoListarViewModel()
                 {
                     pedidos = pedidos,
-                    dataInicio = DateTime.Now.AddDays(-30),
-                    dataFim = DateTime.Now
+                    dataInicio = dtInicio.ToString("dd/MM/yyyy"),
+                    dataFim = dtFim.ToString("dd/MM/yyyy")
                 };
 
                 return View(ViewModel);
@@ -111,8 +114,11 @@ namespace web.Controllers.Pedido
                 // Obtém os pedidos do estabelecimento
                 var pedidos = getPedidosEstabelecimento(getEstabelecimentoID(), null);
 
+                DateTime dtInicio = Convert.ToDateTime(pedidoPesquisa.dataInicio);
+                DateTime dtFim = Convert.ToDateTime(pedidoPesquisa.dataFim);
+
                 // Filtra pedidos pela data informada
-                pedidos = pedidos.Where(p => p.dataPedido >= pedidoPesquisa.dataInicio && p.dataPedido <= pedidoPesquisa.dataFim).ToList();
+                pedidos = pedidos.Where(p => p.dataPedido >= dtInicio && p.dataPedido <= dtFim).ToList();
 
                 var viewModel = new pedidoListarViewModel()
                 {

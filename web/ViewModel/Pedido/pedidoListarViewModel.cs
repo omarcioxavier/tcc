@@ -8,8 +8,8 @@ namespace web.ViewModel.Pedido
     {
         public IEnumerable<pedido> pedidos { get; set; }
 
-        public DateTime dataInicio { get; set; }
+        public string dataInicio { get; set; }
 
-        public DateTime dataFim { get; set; }
+        public string dataFim { get; set; }
     }
 }
