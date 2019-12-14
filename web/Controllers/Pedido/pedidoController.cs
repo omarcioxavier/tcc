@@ -35,16 +35,15 @@ namespace web.Controllers.Pedido
                 var pedidos = getPedidosEstabelecimento(getEstabelecimentoID(), id);
 
                 DateTime dtInicio = DateTime.Now.AddDays(-30);
-                DateTime dtFim = DateTime.Now.AddDays(-30);
-                
+
                 // Filtra pedidos dos últimos 30 dias
-                pedidos = pedidos.Where(p => p.dataPedido >= dtInicio).ToList();
+                pedidos = pedidos.Where(p => p.dataPedido >= dtInicio).OrderByDescending(p => p.dataPedido).ToList();
 
                 var ViewModel = new pedidoListarViewModel()
                 {
                     pedidos = pedidos,
-                    dataInicio = dtInicio.ToString("dd/MM/yyyy"),
-                    dataFim = dtFim.ToString("dd/MM/yyyy")
+                    dataInicio = dtInicio,
+                    dataFim = DateTime.Now,
                 };
 
                 return View(ViewModel);
@@ -114,8 +113,8 @@ namespace web.Controllers.Pedido
                 // Obtém os pedidos do estabelecimento
                 var pedidos = getPedidosEstabelecimento(getEstabelecimentoID(), null);
 
-                DateTime dtInicio = Convert.ToDateTime(pedidoPesquisa.dataInicio);
-                DateTime dtFim = Convert.ToDateTime(pedidoPesquisa.dataFim);
+                DateTime dtInicio = pedidoPesquisa.dataInicio;
+                DateTime dtFim = pedidoPesquisa.dataFim;
 
                 // Filtra pedidos pela data informada
                 pedidos = pedidos.Where(p => p.dataPedido >= dtInicio && p.dataPedido <= dtFim).ToList();
@@ -239,9 +238,9 @@ namespace web.Controllers.Pedido
 
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception(ex.Message);
+                return false;
             }
         }
         #endregion

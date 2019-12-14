@@ -9,13 +9,14 @@ namespace web.Models.Pedido
     [Table("pedido")]
     public class pedido
     {
-        [Key]   
+        [Key]
         public int pedidoID { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy HH:mm:ss}")]
         public DateTime dataPedido { get; set; }
 
         public float valorPedido { get; set; }
-        
+
         public int quantidadeTotal { get; set; }
 
         public bool entrega { get; set; }
@@ -23,7 +24,7 @@ namespace web.Models.Pedido
         public int clienteID { get; set; }
 
         public int estabelecimentoID { get; set; }
-        
+
         public int pagamentoID { get; set; }
 
         [ForeignKey("clienteID")]
